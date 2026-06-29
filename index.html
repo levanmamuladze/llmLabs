@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
   LógosAI — single-page site. Static, no build step (deploy = drop the folder).
-  Structure:  assets/css/main.css  ·  assets/js/app.js  ·  assets/js/estimator.js
+  Structure:  assets/css/main.css  ·  assets/js/app.js
   Before going live, fill the two CONTACT placeholders below (search TODO:contact)
   and point app.js FORM_ENDPOINT at the LógosAI Formspree id. — LM, Jun 2026
 -->
@@ -37,9 +37,8 @@
 
       <div class="lx-nav__links">
         <a href="#build">What we build</a>
-        <a href="#tiers">Bot tiers</a>
         <a href="#demo">Live demo</a>
-        <a href="#run-cost">Running cost</a>
+        <a href="#pricing">Tiers &amp; pricing</a>
         <a href="#faq">FAQ</a>
         <!-- TODO:contact — real number -->
         <a href="tel:+30000000000" class="lx-nav__phone nowrap">+30 — set phone</a>
@@ -52,9 +51,8 @@
     </div>
     <div class="lx-drawer" id="drawer">
       <a href="#build">What we build</a>
-      <a href="#tiers">Bot tiers</a>
       <a href="#demo">Live demo</a>
-      <a href="#run-cost">Running cost</a>
+      <a href="#pricing">Tiers &amp; pricing</a>
       <a href="#faq">FAQ</a>
       <a href="#contact" class="lx-btn lx-cta">Book a call</a>
     </div>
@@ -78,7 +76,7 @@
           </p>
           <div class="lx-stage__actions">
             <a href="#demo" class="lx-btn lx-cta">Talk to the live bot →</a>
-            <a href="#tiers" class="lx-btn lx-ghost">See the four tiers</a>
+            <a href="#pricing" class="lx-btn lx-ghost">See tiers &amp; pricing</a>
           </div>
           <div class="lx-stage__meta">
             <span><b>1–3 days</b> for a FAQ widget</span>
@@ -163,71 +161,6 @@
     </section>
 
     <!-- ===================================================================
-         BOT TIERS — the ladder from the chatbot-types playbook, client-side
-         framing. NOTE: infra €/mo and the S1/S2/S3 retainer tables stay
-         internal (Notion). Here we only show what the client cares about:
-         what it does, what we need from them, how long, who it's for.
-         =================================================================== -->
-    <section class="lx-band wrap" id="tiers">
-      <div class="lx-head rise">
-        <span class="kicker">The ladder</span>
-        <h2>Four tiers. Start low, climb when it pays for itself.</h2>
-        <p class="lede">Every bot can be upgraded into the next tier without a rebuild. Most clients
-          land on a FAQ or Wizard bot and move up once they see it deflecting real work.</p>
-      </div>
-
-      <div class="lx-tierwall">
-        <article class="lx-tier tier-faq rise">
-          <span class="lx-tier__no">TIER 1</span>
-          <h3>FAQ bot</h3>
-          <p class="what">A chat widget on your site that answers the same twenty questions you’re tired of answering — hours, prices, location, returns.</p>
-          <dl>
-            <dt>We need</dt><dd>FAQ + colours</dd>
-            <dt>Credentials</dt><dd>None</dd>
-            <dt>Build</dt><dd>1–3 days</dd>
-          </dl>
-          <p class="fit"><b>Good for:</b> restaurants, salons, small shops.</p>
-        </article>
-
-        <article class="lx-tier tier-wizard rise">
-          <span class="lx-tier__no">TIER 2</span>
-          <h3>Wizard bot</h3>
-          <p class="what">Walks a visitor through a guided flow — what are you after, budget, when — and books the appointment or fires a notification at the end.</p>
-          <dl>
-            <dt>We need</dt><dd>+ the flow</dd>
-            <dt>Credentials</dt><dd>Calendar, email</dd>
-            <dt>Build</dt><dd>3–7 days</dd>
-          </dl>
-          <p class="fit"><b>Good for:</b> dentists, clinics, real estate, law firms — “books while you sleep”.</p>
-        </article>
-
-        <article class="lx-tier tier-rag rise lx-tier--star">
-          <span class="lx-tier__no">TIER 3 · most-asked</span>
-          <h3>Smart / RAG bot</h3>
-          <p class="what">Your documents become searchable. The bot retrieves the right passage and answers from it — understands the question instead of matching keywords.</p>
-          <dl>
-            <dt>We need</dt><dd>+ your docs</dd>
-            <dt>Credentials</dt><dd>Docs / product API</dd>
-            <dt>Build</dt><dd>1–3 weeks</dd>
-          </dl>
-          <p class="fit"><b>Good for:</b> hotels (multilingual), big-catalogue e-shops, accountants.</p>
-        </article>
-
-        <article class="lx-tier tier-agentic rise">
-          <span class="lx-tier__no">TIER 4</span>
-          <h3>Agentic bot</h3>
-          <p class="what">A digital employee. It takes actions — checks an order, issues a refund, reschedules, updates the CRM, sends the invoice — through tool calls, all logged.</p>
-          <dl>
-            <dt>We need</dt><dd>+ system access</dd>
-            <dt>Credentials</dt><dd>CRM, ERP, payment, SMS</dd>
-            <dt>Build</dt><dd>3–6 weeks</dd>
-          </dl>
-          <p class="fit"><b>Good for:</b> high-volume e-commerce, clinics, travel. <em>“Instead of a €1,200/mo hire.”</em></p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ===================================================================
          LIVE DEMO band. Same iframe pattern as the hero but full-width-ish,
          with a bit of context about what tier the demo represents.
          =================================================================== -->
@@ -257,69 +190,118 @@
     </section>
 
     <!-- ===================================================================
-         RUNNING COST estimator. The honest-pricing pitch: bots are cheap to
-         run, here's the maths. Logic in assets/js/estimator.js.
+         TIERS & PRICING. Numbers come straight from the June'26 services
+         proposal (tiersguide). Flat monthly subscription + one-off setup;
+         the subscription bundles hosting + the model + support, so there's
+         no separate "API bill" line to scare anyone. All € ex. VAT 24%.
+         Keep these in sync with the PDF if Levan revises the deck. — LM
          =================================================================== -->
-    <section class="lx-band wrap" id="run-cost">
+    <section class="lx-band wrap" id="pricing">
       <div class="lx-head rise">
-        <span class="kicker">No mystery pricing</span>
-        <h2>What it costs to <em>run</em> a bot</h2>
-        <p class="lede">A common worry: “won’t the AI bill be huge?” Usually not. Drag the slider —
-          this is the same token-cost maths we scope with, on public model prices.</p>
+        <span class="kicker">Tiers &amp; pricing</span>
+        <h2>Four tiers. Start low, climb when it pays for itself.</h2>
+        <p class="lede">A flat monthly subscription plus a one-off setup — that’s it. The subscription
+          already covers hosting, the AI model and support, so there’s no surprise usage bill. Every
+          tier upgrades into the next without a rebuild, and we credit your previous setup when you move up.</p>
       </div>
 
-      <div class="lx-estimator rise">
-        <div>
-          <div class="ctrl">
-            <label for="est-model">Model <b>provider list price</b></label>
-            <select id="est-model"></select>
+      <div class="lx-tierwall">
+        <!-- T1 -->
+        <article class="lx-tier tier-faq rise">
+          <span class="lx-tier__no">TIER 1 · Questions</span>
+          <h3>Bot Ερωτήσεων</h3>
+          <p class="what">A floating chat bubble that understands free-form questions and answers from
+            your content — hours, services, prices, location, policies. Never invents, never goes silent.</p>
+          <div class="lx-plans">
+            <div class="lx-plan">
+              <div class="lx-plan__name"><b>Essential</b><span>Smart Greek answers. Small shop.</span></div>
+              <div class="lx-plan__cost"><span class="mo">€19<small>/mo</small></span><span class="set">setup €120</span></div>
+            </div>
+            <div class="lx-plan">
+              <div class="lx-plan__name"><b>Pro</b><span>Bilingual EL/EN, richer tone for tourism.</span></div>
+              <div class="lx-plan__cost"><span class="mo">€39<small>/mo</small></span><span class="set">setup €150</span></div>
+            </div>
           </div>
-          <div class="ctrl">
-            <label for="est-load">Bot style <b>context size</b></label>
-            <select id="est-load"></select>
-          </div>
-          <div class="ctrl">
-            <label for="est-convos">Conversations / month <b id="est-convos-val">1,000</b></label>
-            <input class="lx-range" type="range" id="est-convos" min="100" max="10000" step="100" value="1000">
-          </div>
-          <p class="sysnote" id="est-note"></p>
-        </div>
-        <div class="bill">
-          <div class="bill-out" id="est-bill">€0</div>
-          <div class="per">estimated LLM API / month</div>
-          <p class="convos">Infra + API only. The build fee and the monthly managed-service
-            (we keep it alive, tune it, swap to a better model when one ships) are quoted separately.</p>
-        </div>
-      </div>
-    </section>
+          <p class="fit"><b>Ideal for:</b> restaurants, shops, services with frequent questions.</p>
+          <a href="#contact" class="lx-tier__cta">Start here →</a>
+        </article>
 
-    <!-- ===================================================================
-         HOW PRICING WORKS — three separate costs. We're upfront about the
-         structure without publishing the internal ranges.
-         =================================================================== -->
-    <section class="lx-band wrap">
-      <div class="lx-head rise">
-        <span class="kicker">How a quote breaks down</span>
-        <h2>Three numbers, not one</h2>
+        <!-- T2 -->
+        <article class="lx-tier tier-wizard rise">
+          <span class="lx-tier__no">TIER 2 · Bookings</span>
+          <h3>Bot Κρατήσεων</h3>
+          <p class="what">Walks the visitor to a booking step-by-step (service → day → time → details) while
+            answering questions along the way. Free slots come from your own schedule, so they’re never stale;
+            issues a booking code.</p>
+          <div class="lx-plans">
+            <div class="lx-plan">
+              <div class="lx-plan__name"><b>Standard</b><span>Full booking flow + smart Q&amp;A.</span></div>
+              <div class="lx-plan__cost"><span class="mo">€59<small>/mo</small></span><span class="set">setup €250</span></div>
+            </div>
+            <div class="lx-plan">
+              <div class="lx-plan__name"><b>Plus</b><span>Advanced bilingual + extra booking scenarios.</span></div>
+              <div class="lx-plan__cost"><span class="mo">€79<small>/mo</small></span><span class="set">setup €290</span></div>
+            </div>
+          </div>
+          <p class="fit"><b>Ideal for:</b> clinics, salons, gyms — anything appointment-based.</p>
+          <a href="#contact" class="lx-tier__cta">Start here →</a>
+        </article>
+
+        <!-- T3 (highlighted) -->
+        <article class="lx-tier tier-rag rise lx-tier--star">
+          <span class="lx-tier__no">TIER 3 · Sales / lead-gen</span>
+          <h3>Bot Πωλήσεων</h3>
+          <p class="what">Opens the conversation, works out what the visitor wants, qualifies the interest,
+            collects contact details and hands the hot lead to a human with a summary of the chat.</p>
+          <div class="lx-plans">
+            <div class="lx-plan">
+              <div class="lx-plan__name"><b>Full</b><span>Qualifying scenarios, lead form, sales alert, basic analytics.</span></div>
+              <div class="lx-plan__cost"><span class="mo">€159<small>/mo</small></span><span class="set">setup €450</span></div>
+            </div>
+          </div>
+          <p class="lx-plan__range">€149–190/mo depending on conversation volume and scenario complexity.</p>
+          <p class="fit"><b>Ideal for:</b> lead-driven services — real estate, insurance, B2B.</p>
+          <a href="#contact" class="lx-tier__cta">Start here →</a>
+        </article>
+
+        <!-- T4 -->
+        <article class="lx-tier tier-agentic rise">
+          <span class="lx-tier__no">TIER 4 · Full agent</span>
+          <h3>Πλήρης Agent</h3>
+          <p class="what">Doesn’t just talk — does the job: books into a real calendar, updates your CRM,
+            sends SMS/email, even takes payments. Designed around your existing systems.</p>
+          <div class="lx-plans">
+            <div class="lx-plan">
+              <div class="lx-plan__name"><b>Custom</b><span>1–3 system integrations, secure flows, priority support.</span></div>
+              <div class="lx-plan__cost"><span class="mo">from €290<small>/mo</small></span><span class="set">setup from €800</span></div>
+            </div>
+          </div>
+          <p class="lx-plan__range">Always quoted per project — cost is driven by the integrations and the safety checks.</p>
+          <p class="fit"><b>Ideal for:</b> businesses with systems that want real automation.</p>
+          <a href="#contact" class="lx-tier__cta">Get a quote →</a>
+        </article>
       </div>
-      <div class="lx-costs">
-        <div class="lx-cost rise">
-          <span class="n">01</span>
-          <h4>One-off build</h4>
-          <p>Design, prompt + flow engineering, integrations, and getting it live. Paid once. Scales with the tier — a FAQ widget is a few days, an agentic build is a few weeks.</p>
-          <p class="tag">50% to start, 50% on launch.</p>
+
+      <!-- add-ons + discounts straight from the proposal -->
+      <div class="lx-addons rise">
+        <div class="lx-addons__col">
+          <h4>Add-ons</h4>
+          <ul>
+            <li><span>WhatsApp / Instagram / Messenger channel</span><b>+€25–45/mo</b></li>
+            <li><span>Extra language beyond EL/EN</span><b>+€10/mo</b></li>
+            <li><span>Connect an external system <em>(per integration)</em></span><b>from €250 once</b></li>
+            <li><span>Monthly report &amp; analytics</span><b>+€15/mo</b></li>
+            <li><span>Priority support</span><b>+€20/mo</b></li>
+          </ul>
         </div>
-        <div class="lx-cost rise">
-          <span class="n">02</span>
-          <h4>Infra + API / month</h4>
-          <p>Hosting on EU servers and the LLM tokens it burns. The slider above is exactly this number. Often a few euros for a cached FAQ bot; more as context and tool-use grow.</p>
-          <p class="tag">Pass-through, no markup games.</p>
-        </div>
-        <div class="lx-cost rise">
-          <span class="n">03</span>
-          <h4>Managed service / month</h4>
-          <p>We keep it alive — uptime monitoring, bug fixes, content updates, prompt tuning, model upgrades, usage reports. Three levels (Support → Improvements → Growth); pick what fits.</p>
-          <p class="tag">Optional. You own the bot either way.</p>
+        <div class="lx-addons__col">
+          <h4>Discounts &amp; flexibility</h4>
+          <ul>
+            <li><span>Annual prepay</span><b>2 months free (−16%)</b></li>
+            <li><span>Seasonal businesses (e.g. tavernas)</span><b>winter pause / reduced off-season</b></li>
+            <li><span>Upgrade tier anytime</span><b>previous setup credited</b></li>
+          </ul>
+          <p class="lx-vat">All prices in € excluding VAT 24%. Indicative and adjustable per project — Greek market.</p>
         </div>
       </div>
     </section>
@@ -380,12 +362,12 @@
         <h2>Questions we get a lot</h2>
       </div>
       <div class="lx-faq">
-        <details class="rise"><summary>Will the bot make stuff up?</summary><p>A FAQ or RAG bot answers from content you give it and is told to say “I don’t know, here’s how to reach a human” when it’s out of scope. Hallucination risk drops sharply when the model is grounded in retrieved text instead of free-styling. We test the edges before launch.</p></details>
-        <details class="rise"><summary>Do you need our passwords?</summary><p>Tiers 1 and 2, basically no — a FAQ bot holds zero credentials, a wizard needs calendar/email access. Only the agentic tier touches real systems, and there we use scoped, least-privilege keys stored encrypted, with every action logged so you can audit what it did.</p></details>
-        <details class="rise"><summary>How much will the AI cost per month to run?</summary><p>For most small-business bots, single-digit to low-double-digit euros a month — see the slider above. It climbs with heavy context (RAG) or tool-use (agentic). Prompt caching makes repetitive FAQ traffic dramatically cheaper. It’s usually the smallest line on the invoice.</p></details>
-        <details class="rise"><summary>Can it speak Greek properly?</summary><p>Yes — that’s the point of defaulting to Claude. It handles Greek tone, formal/informal register, and code-switching mid-sentence. Greek runs a touch more tokens than English, which the estimate already assumes.</p></details>
+        <details class="rise"><summary>Will the bot make stuff up?</summary><p>It answers from the content you give it and is told to say “I don’t know — here’s how to reach a human” when something’s out of scope. Grounding the model in your own material instead of letting it free-style is exactly what keeps it from inventing hours or prices. We test the edges before launch.</p></details>
+        <details class="rise"><summary>Do you need our passwords?</summary><p>For Tiers 1 and 2, basically no — a Questions bot holds zero credentials, a Bookings bot just needs calendar/email access. Only the full Agent tier touches real systems, and there we use scoped, least-privilege keys stored encrypted, with every action logged so you can audit what it did.</p></details>
+        <details class="rise"><summary>Are there hidden usage fees on top of the monthly price?</summary><p>No. The tier subscription is flat and already bundles hosting and the AI model, so there’s no separate “API bill” that creeps up with traffic. Even on the priciest model our running cost stays well under what the subscription covers — that’s why pricing is based on the value (fewer phone calls, fewer no-shows, 24/7), not on tokens.</p></details>
+        <details class="rise"><summary>Can it speak Greek properly?</summary><p>Yes — every tier is bilingual EL/EN out of the box and the content is written in Greek. We run an economical model by default and can switch to Claude per client (one line of config) when a job needs top-tier Greek tone and nuance.</p></details>
         <details class="rise"><summary>We already have a website. Do we need a new one?</summary><p>No. The chatbot drops onto your existing site with one script tag. We only build a site if you want one or the current one is holding the bot back.</p></details>
-        <details class="rise"><summary>What if we outgrow the tier we start on?</summary><p>That’s the plan. Every tier upgrades into the next without a rebuild — a FAQ bot becomes a RAG bot when your content grows, a wizard becomes agentic when you’re ready to let it take actions. You only pay the difference.</p></details>
+        <details class="rise"><summary>What if we outgrow the tier we start on?</summary><p>That’s the plan. Upgrade anytime — a Questions bot grows into Bookings, Bookings into Sales, and any of them into a full Agent. No rebuild, and we credit the setup fee you already paid against the new tier. Tiers can also be hybrid: e.g. a Questions bot with one booking button borrowed from Tier 2.</p></details>
         <details class="rise"><summary>Do we own it?</summary><p>Yes. The build is yours. The managed-service subscription is optional — drop it whenever, the bot is still yours. No lock-in.</p></details>
       </div>
     </section>
@@ -427,10 +409,10 @@
           <input type="text" id="f-company" name="company" placeholder="Business name (optional)" autocomplete="organization">
           <select id="f-tier" name="tier">
             <option value="">What are you after? (optional)</option>
-            <option value="faq">FAQ widget — answer the same questions</option>
-            <option value="wizard">Wizard — book appointments / qualify leads</option>
-            <option value="rag">Smart / RAG — answer from our documents</option>
-            <option value="agentic">Agentic — take actions in our systems</option>
+            <option value="t1-questions">Tier 1 · Questions bot — answer customer questions</option>
+            <option value="t2-bookings">Tier 2 · Bookings bot — guide visitors to an appointment</option>
+            <option value="t3-sales">Tier 3 · Sales bot — qualify &amp; capture leads</option>
+            <option value="t4-agent">Tier 4 · Full Agent — connect to our systems</option>
             <option value="website">A website (with or without a bot)</option>
             <option value="unsure">Not sure yet — help me pick</option>
           </select>
@@ -450,7 +432,7 @@
       <small>© <span id="yr">2026</span> LógosAI — chatbots, AI agents &amp; websites. Athens.</small>
       <div class="row" style="gap:20px;flex-wrap:wrap">
         <a href="#build">What we build</a>
-        <a href="#tiers">Tiers</a>
+        <a href="#pricing">Pricing</a>
         <a href="#demo">Demo</a>
         <a href="#contact">Contact</a>
       </div>
@@ -464,6 +446,5 @@
   </div>
 
   <script src="assets/js/app.js" defer></script>
-  <script src="assets/js/estimator.js" defer></script>
 </body>
 </html>

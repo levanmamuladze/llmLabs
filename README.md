@@ -9,7 +9,6 @@ index.html              ← the page (one file, all sections)
 assets/
   css/main.css          ← design system + components (prefix `lx-`)
   js/app.js             ← nav, drawer, scroll-reveal, bot-iframe loader, lead form
-  js/estimator.js       ← running-cost calculator (token-cost math)
 ```
 
 ## Before going live — checklist
@@ -21,23 +20,27 @@ Search the repo for `TODO:contact` and `TODO(LM)`:
 2. **Lead form endpoint** — `app.js` → `FORM_ENDPOINT` still points at the old
    LMLabs Formspree id so test submits don't vanish. Swap it for the LógosAI
    form once the inbox is verified.
-3. **Estimator prices** — `estimator.js` `MODELS` are provider *list* prices
-   (USD/1M tokens). They drift; re-check the official pricing pages before you
-   lean on the number in a written quote. `USD_TO_EUR` is re-pegged quarterly.
+3. **Pricing** — the `#pricing` section hardcodes the numbers from the June'26
+   services proposal (`tiersguide.pdf`). If Levan revises the deck, update the
+   tier cards + add-ons in `index.html` to match. Prices are € **ex. VAT 24%**.
 
-## The running-cost estimator
+## Pricing model (what's on the page)
 
-`estimator.js` is the same back-of-envelope we scope tiers with:
+Flat **monthly subscription + one-off setup**, four tiers with sub-tiers:
 
-```
-bill ≈ conversations × ( conv_in/1e6 · in_price + conv_out/1e6 · out_price ) × USD→EUR
-```
+| Tier | Sub-tiers | Monthly | Setup |
+|------|-----------|---------|-------|
+| 1 · Questions | Essential / Pro | €19 / €39 | €120 / €150 |
+| 2 · Bookings | Standard / Plus | €59 / €79 | €250 / €290 |
+| 3 · Sales / lead-gen | Full | €159 (range €149–190) | €450 |
+| 4 · Full Agent | Custom | from €290 (by quote) | from €800 |
 
-Input dominates because every turn re-sends the whole context. Cached workloads
-(FAQ, RAG) discount the stable system+knowledge slab ~10×. This is **infra/API
-only** — not the build fee, not the managed-service retainer. Those (and the
-internal S1/S2/S3 ranges) live in the chatbot-types doc in Notion and **must not**
-be surfaced on the page.
+Plus add-ons (channels, extra language, integrations, analytics, priority) and
+discounts (annual −16%, seasonal pause, upgrade credit). The subscription bundles
+hosting + model + support — deliberately **no per-conversation/token bill is shown
+to clients**; pricing is value-based, not usage-metered. Internal model-cost notes
+(the per-conversation €0.000x figures) stay in the chatbot-types doc in Notion and
+must not be surfaced on the page.
 
 ## The live demo iframe
 

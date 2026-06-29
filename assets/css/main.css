@@ -198,50 +198,38 @@ body::after{
 .tier-wizard::after{background:#5bc8ff}
 .tier-rag::after{background:var(--indigo)}
 .tier-agentic::after{background:var(--amber)}
-.lx-tier__no{font-family:'Outfit';font-size:.78rem;color:var(--faint);letter-spacing:.14em}
-.lx-tier h3{font-size:1.18rem;margin:6px 0 6px}
-.lx-tier .what{color:var(--muted);font-size:.9rem;min-height:66px}
-.lx-tier dl{margin-top:16px;display:grid;grid-template-columns:auto 1fr;gap:7px 12px;font-size:.82rem}
-.lx-tier dt{color:var(--faint)}
-.lx-tier dd{color:var(--fg);text-align:right}
+.lx-tier__no{font-family:'Outfit';font-size:.74rem;color:var(--faint);letter-spacing:.12em;text-transform:uppercase}
+.lx-tier h3{font-size:1.22rem;margin:6px 0 8px}
+.lx-tier .what{color:var(--muted);font-size:.88rem}
+/* sub-tier price rows. .lx-plans flex-grows so .fit + CTA pin to the card
+   bottom no matter how many sub-tiers a tier has (T1/T2 carry two). */
+.lx-plans{display:flex;flex-direction:column;gap:10px;margin-top:18px;flex-grow:1}
+.lx-plan{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px 14px;border:1px solid var(--line-soft);border-radius:var(--r-sm);background:rgba(255,255,255,.018)}
+.lx-plan__name b{display:block;font-size:.92rem}
+.lx-plan__name span{display:block;color:var(--faint);font-size:.78rem;margin-top:2px}
+.lx-plan__cost{text-align:right;white-space:nowrap}
+.lx-plan__cost .mo{display:block;font-family:'Outfit';font-weight:800;font-size:1.18rem;color:var(--fg)}
+.lx-plan__cost .mo small{font-weight:600;font-size:.72rem;color:var(--muted)}
+.lx-plan__cost .set{display:block;font-size:.72rem;color:var(--faint);margin-top:1px}
+.lx-plan__range{font-size:.76rem;color:var(--faint);margin-top:10px;font-style:italic}
 .lx-tier .fit{margin-top:16px;padding-top:14px;border-top:1px solid var(--line-soft);font-size:.82rem;color:var(--muted)}
 .lx-tier .fit b{color:var(--teal);font-weight:600}
+.lx-tier__cta{margin-top:14px;font-weight:700;font-size:.9rem;color:var(--teal)}
+.lx-tier__cta:hover{text-decoration:underline}
 .lx-tier--star{border-color:var(--indigo);box-shadow:0 0 50px -18px var(--indigo)}
 
-/* =========================================================================
-   estimator — real token-cost math, see assets/js/estimator.js
-   numbers below are PROVIDER LIST PRICES (public), not our margin.
-   ========================================================================= */
-.lx-estimator{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;border:1px solid var(--line);border-radius:var(--r-lg);background:linear-gradient(180deg,var(--ink-1),var(--ink-2));padding:34px;align-items:center}
-.lx-estimator .ctrl{margin-bottom:22px}
-.lx-estimator label{display:flex;justify-content:space-between;font-size:.86rem;color:var(--muted);margin-bottom:9px}
-.lx-estimator label b{color:var(--fg);font-family:'Outfit'}
-.lx-estimator select{
-  width:100%;background:var(--ink-2);border:1px solid var(--line);color:var(--fg);
-  padding:13px 15px;border-radius:var(--r-sm);font-size:.95rem;font-family:inherit;
-  appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239aa0b8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center
-}
-/* range slider — restyled, the thumb is the fiddly part across browsers */
-.lx-range{-webkit-appearance:none;width:100%;height:6px;border-radius:999px;background:var(--line);outline:none}
-.lx-range::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--teal);cursor:pointer;border:3px solid var(--ink);box-shadow:0 0 0 1px var(--teal-deep)}
-.lx-range::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--teal);cursor:pointer;border:3px solid var(--ink)}
-.lx-estimator .bill{text-align:center;border-left:1px solid var(--line);padding-left:34px}
-.bill-out{font-family:'Outfit';font-size:3.1rem;font-weight:800;line-height:1;background:linear-gradient(120deg,var(--teal),var(--indigo));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.bill .per{color:var(--faint);font-size:.82rem;margin-top:6px}
-.bill .convos{color:var(--muted);font-size:.86rem;margin-top:18px}
-.sysnote{font-size:.78rem;color:var(--faint);margin-top:18px;line-height:1.5}
-.sysnote code{background:var(--ink-2);padding:1px 6px;border-radius:5px;color:var(--teal)}
+/* add-ons / discounts strip under the pricing grid */
+.lx-addons{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.lx-addons__col{border:1px solid var(--line);border-radius:var(--r);background:var(--ink-1);padding:24px}
+.lx-addons__col h4{font-size:1.02rem;margin-bottom:14px}
+.lx-addons__col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.lx-addons__col li{display:flex;justify-content:space-between;gap:16px;font-size:.86rem;color:var(--muted);padding-bottom:9px;border-bottom:1px solid var(--line-soft)}
+.lx-addons__col li:last-child{border-bottom:0;padding-bottom:0}
+.lx-addons__col li b{color:var(--teal);font-weight:700;white-space:nowrap}
+.lx-addons__col li em{color:var(--faint);font-style:normal}
+.lx-vat{font-size:.78rem;color:var(--faint);margin-top:16px;line-height:1.5}
 
-/* =========================================================================
-   pricing structure (3 separate costs) + process flow
-   ========================================================================= */
-.lx-costs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.lx-cost{border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;background:var(--ink-1)}
-.lx-cost .n{font-family:'Outfit';font-size:.8rem;color:var(--teal);letter-spacing:.1em}
-.lx-cost h4{font-size:1.12rem;margin:8px 0 10px}
-.lx-cost p{color:var(--muted);font-size:.9rem}
-.lx-cost .tag{margin-top:14px;font-size:.8rem;color:var(--faint)}
-
+/* process flow */
 .lx-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:step}
 .lx-step{border:1px solid var(--line);border-radius:var(--r);padding:22px 18px;background:var(--ink-1);position:relative}
 .lx-step .s{font-family:'Outfit';font-weight:800;color:var(--teal);font-size:1.4rem}
@@ -307,12 +295,11 @@ body::after{
 @media(max-width:980px){
   .lx-nav__links{display:none}
   .lx-burger{display:block}
-  .lx-stage__grid,.lx-estimator,.lx-contact{grid-template-columns:1fr}
-  .lx-pillars,.lx-costs{grid-template-columns:1fr}
+  .lx-stage__grid,.lx-contact{grid-template-columns:1fr}
+  .lx-pillars{grid-template-columns:1fr}
   .lx-tierwall{grid-template-columns:1fr 1fr}
   .lx-flow{grid-template-columns:1fr 1fr}
-  .lx-why{grid-template-columns:1fr}
-  .lx-estimator .bill{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:26px}
+  .lx-why,.lx-addons{grid-template-columns:1fr}
 }
 @media(max-width:720px){
   .lx-band{padding:74px 0}
