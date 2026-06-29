@@ -1,507 +1,469 @@
 <!DOCTYPE html>
+<!--
+  LógosAI — single-page site. Static, no build step (deploy = drop the folder).
+  Structure:  assets/css/main.css  ·  assets/js/app.js  ·  assets/js/estimator.js
+  Before going live, fill the two CONTACT placeholders below (search TODO:contact)
+  and point app.js FORM_ENDPOINT at the LógosAI Formspree id. — LM, Jun 2026
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LMLabs — Websites That Help Businesses Get More Calls and Leads</title>
-  <meta name="description" content="LMLabs builds modern, conversion-focused websites for businesses that want more leads, more calls, and a stronger online presence. Starting from €700.">
-  <meta name="theme-color" content="#0a0a0f">
-  <meta property="og:title" content="LMLabs — Websites Built to Get More Calls and Leads">
-  <meta property="og:description" content="Modern, fast, conversion-focused websites for businesses that want to look professional and turn visitors into real inquiries.">
+  <title>LógosAI — Chatbots, AI Agents & Websites for Greek businesses</title>
+  <meta name="description" content="LógosAI designs conversational chatbots, action-taking AI agents, and the websites they live on. Greek-first, EU-hosted, Claude-powered. Live demo on the page.">
+  <meta name="theme-color" content="#07080d">
+  <meta property="og:title" content="LógosAI — Bots that answer, agents that act">
+  <meta property="og:description" content="From a one-script FAQ widget to a RAG knowledge base to a full agentic assistant that books, checks orders and updates your CRM. Try the live bot.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
-<body>
-  <nav id="nav">
-    <div class="nav-inner">
-      <a href="#top" class="logo">LM<span>Labs</span></a>
+<body id="top">
 
-      <div class="nav-links desktop-nav">
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#process">Process</a>
-        <a href="#work">Work</a>
+  <nav class="lx-nav" id="nav">
+    <div class="lx-nav__in">
+      <a href="#top" class="lx-logo" aria-label="LógosAI home">
+        <!-- mark: a "speech bubble made of a lambda" — Λ for Lógos -->
+        <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="1.5" y="1.5" width="29" height="24" rx="8" stroke="#2de2c0" stroke-width="2"/>
+          <path d="M9 24l-3 5 7-3" stroke="#2de2c0" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M11 19l5-12 5 12" stroke="#6d7cff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13.2 13.6h5.6" stroke="#6d7cff" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <span><b>Lógos</b><span class="ai">AI</span></span>
+      </a>
+
+      <div class="lx-nav__links">
+        <a href="#build">What we build</a>
+        <a href="#tiers">Bot tiers</a>
+        <a href="#demo">Live demo</a>
+        <a href="#run-cost">Running cost</a>
         <a href="#faq">FAQ</a>
-        <a href="tel:+306836781888" class="nav-phone">+30 683 678 188</a>
-        <a href="#contact" class="nav-cta">Get a Free Quote</a>
+        <!-- TODO:contact — real number -->
+        <a href="tel:+30000000000" class="lx-nav__phone nowrap">+30 — set phone</a>
+        <a href="#contact" class="lx-btn lx-cta">Book a call</a>
       </div>
 
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+      <button class="lx-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
     </div>
-
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#process">Process</a>
-      <a href="#work">Work</a>
+    <div class="lx-drawer" id="drawer">
+      <a href="#build">What we build</a>
+      <a href="#tiers">Bot tiers</a>
+      <a href="#demo">Live demo</a>
+      <a href="#run-cost">Running cost</a>
       <a href="#faq">FAQ</a>
-      <a href="tel:+30683678188">Call +30 683 678 188</a>
-      <a href="#contact" class="nav-cta mobile-menu-cta">Get a Free Quote</a>
+      <a href="#contact" class="lx-btn lx-cta">Book a call</a>
     </div>
   </nav>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-badge">🟢 Currently accepting new projects</div>
-        <h1>Websites Built to Help Your Business <span class="gradient">Get More Calls and Leads</span></h1>
-        <p>LMLabs creates modern, fast, conversion-focused websites for businesses that want to look professional, build trust quickly, and turn visitors into real inquiries. Starting from €700.</p>
-
-        <div class="hero-actions">
-          <a class="btn-primary" href="#contact">Get a Free Quote →</a>
-          <a class="btn-secondary" href="#pricing">See Packages</a>
+  <main>
+    <!-- ===================================================================
+         HERO. Right column is the *actual* demo bot in an iframe, not a
+         screenshot — first thing we want a visitor to do is talk to it.
+         =================================================================== -->
+    <header class="lx-stage wrap">
+      <div class="lx-stage__grid">
+        <div>
+          <span class="pill"><span class="dot"></span> Taking on 2–3 new bot builds this quarter</span>
+          <h1>Bots that <span class="glow">answer</span>. Agents that <span class="glow">act</span>. Sites worth talking to.</h1>
+          <p class="sub">
+            LógosAI builds the conversational layer for Greek businesses — from a one-script FAQ
+            widget to a full agentic assistant that books appointments, checks order status and
+            writes back to your CRM. Greek-first, EU-hosted, and tuned on Claude so it actually
+            sounds like a person, not a phone tree.
+          </p>
+          <div class="lx-stage__actions">
+            <a href="#demo" class="lx-btn lx-cta">Talk to the live bot →</a>
+            <a href="#tiers" class="lx-btn lx-ghost">See the four tiers</a>
+          </div>
+          <div class="lx-stage__meta">
+            <span><b>1–3 days</b> for a FAQ widget</span>
+            <span><b>EU servers</b> · GDPR covered</span>
+            <span><b>Direct</b> — you talk to the dev</span>
+          </div>
         </div>
 
-        <div class="hero-contact-row">
-          <a href="tel:+30683678188">📞 +30 683 678 188</a>
-          <a href="mailto:lmlabs.dev@gmail.com">✉️ lmlabs.dev@gmail.com</a>
-        </div>
+        <!-- the live widget. iframe loads lazily; #botLoad is the spinner under it -->
+        <aside class="lx-botframe rise" aria-label="Live chatbot demo">
+          <div class="lx-botframe__bar">
+            <i></i><i></i><i></i>
+            <span>demo — FAQ tier · chat-bot-henna-mu</span>
+          </div>
+          <div class="lx-botframe__stage">
+            <div class="lx-botframe__load" id="botLoad">
+              <div>
+                <div class="lx-spin"></div>
+                <p style="margin-top:12px">waking the demo bot…</p>
+              </div>
+            </div>
+            <iframe id="botFrame" src="https://chat-bot-henna-mu.vercel.app/"
+                    title="LógosAI demo chatbot" loading="lazy"
+                    referrerpolicy="no-referrer"></iframe>
+          </div>
+        </aside>
+      </div>
+    </header>
 
-        <div class="hero-stats">
-          <div class="stat">
-            <h3>1–2 weeks</h3>
-            <p>Typical turnaround for a standard business website</p>
+    <!-- ===================================================================
+         WHAT WE BUILD — three pillars. SVG icons on purpose; we stopped
+         using emoji after a client's Windows 7 box rendered them as boxes.
+         =================================================================== -->
+    <section class="lx-band wrap" id="build">
+      <div class="lx-head rise">
+        <span class="kicker">What we build</span>
+        <h2>Three things, one conversation</h2>
+        <p class="lede">Most clients start with one and grow into the others. The bot and the site
+          share the same brand voice because the same person writes both.</p>
+      </div>
+
+      <div class="lx-pillars">
+        <article class="lx-card rise">
+          <div class="lx-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.7-.8L3 21l1.8-5.4A8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>
           </div>
-          <div class="stat">
-            <h3>Mobile-first</h3>
-            <p>Built to look sharp and convert well on phones first</p>
+          <h3>Conversational chatbots</h3>
+          <p>The widget that answers ωράρια, τιμές, “πού είστε;” — and the smarter ones that read your whole knowledge base before replying.</p>
+          <ul>
+            <li>One &lt;script&gt; tag, drops into any site</li>
+            <li>Greek + English in the same thread</li>
+            <li>Answers from your content, not made up</li>
+          </ul>
+        </article>
+
+        <article class="lx-card rise">
+          <div class="lx-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/><circle cx="12" cy="12" r="4"/></svg>
           </div>
-          <div class="stat">
-            <h3>Direct</h3>
-            <p>You work directly with the developer from start to finish</p>
+          <h3>AI agents that do things</h3>
+          <p>Not just talk — act. Books the appointment, checks order status, files the return, pushes the lead into your CRM. Tool-calling with an audit log on every action.</p>
+          <ul>
+            <li>Calendar, e-shop, CRM, payment, SMS</li>
+            <li>Scoped, read-only credentials by default</li>
+            <li>Every action logged — you can see what it did</li>
+          </ul>
+        </article>
+
+        <article class="lx-card rise">
+          <div class="lx-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg>
           </div>
+          <h3>The site it lives on</h3>
+          <p>If the bot needs a home, we build it. Fast, mobile-first landing pages and business sites — the same conversion focus, now with an assistant baked in instead of a contact form nobody fills.</p>
+          <ul>
+            <li>Mobile-first, loads fast on 4G</li>
+            <li>Bot embedded, not bolted on</li>
+            <li>You own the code — no lock-in</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         BOT TIERS — the ladder from the chatbot-types playbook, client-side
+         framing. NOTE: infra €/mo and the S1/S2/S3 retainer tables stay
+         internal (Notion). Here we only show what the client cares about:
+         what it does, what we need from them, how long, who it's for.
+         =================================================================== -->
+    <section class="lx-band wrap" id="tiers">
+      <div class="lx-head rise">
+        <span class="kicker">The ladder</span>
+        <h2>Four tiers. Start low, climb when it pays for itself.</h2>
+        <p class="lede">Every bot can be upgraded into the next tier without a rebuild. Most clients
+          land on a FAQ or Wizard bot and move up once they see it deflecting real work.</p>
+      </div>
+
+      <div class="lx-tierwall">
+        <article class="lx-tier tier-faq rise">
+          <span class="lx-tier__no">TIER 1</span>
+          <h3>FAQ bot</h3>
+          <p class="what">A chat widget on your site that answers the same twenty questions you’re tired of answering — hours, prices, location, returns.</p>
+          <dl>
+            <dt>We need</dt><dd>FAQ + colours</dd>
+            <dt>Credentials</dt><dd>None</dd>
+            <dt>Build</dt><dd>1–3 days</dd>
+          </dl>
+          <p class="fit"><b>Good for:</b> restaurants, salons, small shops.</p>
+        </article>
+
+        <article class="lx-tier tier-wizard rise">
+          <span class="lx-tier__no">TIER 2</span>
+          <h3>Wizard bot</h3>
+          <p class="what">Walks a visitor through a guided flow — what are you after, budget, when — and books the appointment or fires a notification at the end.</p>
+          <dl>
+            <dt>We need</dt><dd>+ the flow</dd>
+            <dt>Credentials</dt><dd>Calendar, email</dd>
+            <dt>Build</dt><dd>3–7 days</dd>
+          </dl>
+          <p class="fit"><b>Good for:</b> dentists, clinics, real estate, law firms — “books while you sleep”.</p>
+        </article>
+
+        <article class="lx-tier tier-rag rise lx-tier--star">
+          <span class="lx-tier__no">TIER 3 · most-asked</span>
+          <h3>Smart / RAG bot</h3>
+          <p class="what">Your documents become searchable. The bot retrieves the right passage and answers from it — understands the question instead of matching keywords.</p>
+          <dl>
+            <dt>We need</dt><dd>+ your docs</dd>
+            <dt>Credentials</dt><dd>Docs / product API</dd>
+            <dt>Build</dt><dd>1–3 weeks</dd>
+          </dl>
+          <p class="fit"><b>Good for:</b> hotels (multilingual), big-catalogue e-shops, accountants.</p>
+        </article>
+
+        <article class="lx-tier tier-agentic rise">
+          <span class="lx-tier__no">TIER 4</span>
+          <h3>Agentic bot</h3>
+          <p class="what">A digital employee. It takes actions — checks an order, issues a refund, reschedules, updates the CRM, sends the invoice — through tool calls, all logged.</p>
+          <dl>
+            <dt>We need</dt><dd>+ system access</dd>
+            <dt>Credentials</dt><dd>CRM, ERP, payment, SMS</dd>
+            <dt>Build</dt><dd>3–6 weeks</dd>
+          </dl>
+          <p class="fit"><b>Good for:</b> high-volume e-commerce, clinics, travel. <em>“Instead of a €1,200/mo hire.”</em></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         LIVE DEMO band. Same iframe pattern as the hero but full-width-ish,
+         with a bit of context about what tier the demo represents.
+         =================================================================== -->
+    <section class="lx-band wrap" id="demo">
+      <div class="lx-head rise">
+        <span class="kicker">Live, not a mockup</span>
+        <h2>This is a real FAQ-tier bot. Ask it something.</h2>
+        <p class="lede">
+          The widget on the right is one we host — the same stack we’d ship you, embedded with a
+          single script tag. It’s a Tier-1 FAQ build, so it answers from a fixed knowledge set and
+          holds no credentials. Push it: ask about hours, pricing, what it can’t do.
+          <a class="lx-link" href="https://chat-bot-henna-mu.vercel.app/" target="_blank" rel="noopener">Open it full-screen ↗</a>
+        </p>
+      </div>
+
+      <div class="lx-botframe rise" style="max-width:760px;margin:0 auto">
+        <div class="lx-botframe__bar"><i></i><i></i><i></i><span>chat-bot-henna-mu.vercel.app</span></div>
+        <div class="lx-botframe__stage" style="height:560px">
+          <div class="lx-botframe__load" id="botLoad2">
+            <div><div class="lx-spin"></div><p style="margin-top:12px">loading the demo…</p></div>
+          </div>
+          <iframe src="https://chat-bot-henna-mu.vercel.app/" title="LógosAI live FAQ bot demo"
+                  loading="lazy" referrerpolicy="no-referrer"
+                  onload="document.getElementById('botLoad2').classList.add('gone')"></iframe>
         </div>
       </div>
     </section>
 
-    <!-- WHO THIS IS FOR -->
-    <section id="who" class="who-section">
-      <div class="container">
-        <div class="reveal section-head">
-          <div class="section-label">Who This Is For</div>
-          <h2 class="section-title">You Should Talk to LMLabs If...</h2>
-        </div>
+    <!-- ===================================================================
+         RUNNING COST estimator. The honest-pricing pitch: bots are cheap to
+         run, here's the maths. Logic in assets/js/estimator.js.
+         =================================================================== -->
+    <section class="lx-band wrap" id="run-cost">
+      <div class="lx-head rise">
+        <span class="kicker">No mystery pricing</span>
+        <h2>What it costs to <em>run</em> a bot</h2>
+        <p class="lede">A common worry: “won’t the AI bill be huge?” Usually not. Drag the slider —
+          this is the same token-cost maths we scope with, on public model prices.</p>
+      </div>
 
-        <div class="who-grid">
-          <div class="who-item reveal">
-            <div class="who-icon">🚫</div>
-            <div>
-              <h4>You don't have a website yet</h4>
-              <p>Customers search online before visiting. Without a website, you're invisible to a large share of potential customers looking for exactly what you offer.</p>
-            </div>
+      <div class="lx-estimator rise">
+        <div>
+          <div class="ctrl">
+            <label for="est-model">Model <b>provider list price</b></label>
+            <select id="est-model"></select>
           </div>
-          <div class="who-item reveal">
-            <div class="who-icon">📱</div>
-            <div>
-              <h4>Your website looks outdated or broken on mobile</h4>
-              <p>If your site was built years ago and doesn't work well on phones, it's quietly turning people away. Most visitors arrive on mobile.</p>
-            </div>
+          <div class="ctrl">
+            <label for="est-load">Bot style <b>context size</b></label>
+            <select id="est-load"></select>
           </div>
-          <div class="who-item reveal">
-            <div class="who-icon">📉</div>
-            <div>
-              <h4>Your website doesn't generate calls or inquiries</h4>
-              <p>A website that just "exists" is not working for you. Your site should make it easy and obvious for people to contact you.</p>
-            </div>
+          <div class="ctrl">
+            <label for="est-convos">Conversations / month <b id="est-convos-val">1,000</b></label>
+            <input class="lx-range" type="range" id="est-convos" min="100" max="10000" step="100" value="1000">
           </div>
-          <div class="who-item reveal">
-            <div class="who-icon">🏪</div>
-            <div>
-              <h4>You run a local or service-based business</h4>
-              <p>Restaurants, salons, clinics, law firms, gyms, repair shops, cleaning services — businesses where customers search locally before choosing.</p>
-            </div>
-          </div>
+          <p class="sysnote" id="est-note"></p>
+        </div>
+        <div class="bill">
+          <div class="bill-out" id="est-bill">€0</div>
+          <div class="per">estimated LLM API / month</div>
+          <p class="convos">Infra + API only. The build fee and the monthly managed-service
+            (we keep it alive, tune it, swap to a better model when one ships) are quoted separately.</p>
         </div>
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section id="services">
-      <div class="container">
-        <div class="reveal section-head">
-          <div class="section-label">What LMLabs Does</div>
-          <h2 class="section-title">Website Services Built Around Real Business Goals</h2>
-          <p class="section-sub">The goal is not just to make your business look better online. The goal is to help more people trust you, contact you, and choose you.</p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card reveal">
-            <div class="service-icon">🌐</div>
-            <h3>Custom Business Websites</h3>
-            <p>Professional websites tailored to your business, your offer, and the action you want visitors to take. Not templates — real custom builds.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="service-icon">🔄</div>
-            <h3>Website Redesigns</h3>
-            <p>If your current site is outdated, slow, or not converting, a redesign with modern structure and clear calls-to-action can change everything.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="service-icon">🎯</div>
-            <h3>Landing Pages</h3>
-            <p>Focused single-page builds designed to increase calls, quote requests, bookings, and contact form submissions.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="service-icon">⚡</div>
-            <h3>Speed & Mobile Optimization</h3>
-            <p>Fast-loading pages and mobile-first structure so your business looks trustworthy on every device, every time.</p>
-          </article>
-        </div>
+    <!-- ===================================================================
+         HOW PRICING WORKS — three separate costs. We're upfront about the
+         structure without publishing the internal ranges.
+         =================================================================== -->
+    <section class="lx-band wrap">
+      <div class="lx-head rise">
+        <span class="kicker">How a quote breaks down</span>
+        <h2>Three numbers, not one</h2>
       </div>
-    </section>
-
-    <!-- PRICING -->
-    <section id="pricing">
-      <div class="container">
-        <div class="reveal section-head">
-          <div class="section-label">Pricing</div>
-          <h2 class="section-title">Clear Packages. No Surprises.</h2>
-          <p class="section-sub">Every package includes mobile-responsive design, SEO-ready foundation, contact form setup, and direct communication with the developer.</p>
+      <div class="lx-costs">
+        <div class="lx-cost rise">
+          <span class="n">01</span>
+          <h4>One-off build</h4>
+          <p>Design, prompt + flow engineering, integrations, and getting it live. Paid once. Scales with the tier — a FAQ widget is a few days, an agentic build is a few weeks.</p>
+          <p class="tag">50% to start, 50% on launch.</p>
         </div>
-
-        <div class="pricing-grid">
-          <article class="price-card reveal">
-            <div class="price-tag">Starter</div>
-            <div class="price-amount">€700</div>
-            <p class="price-desc">A focused landing page for businesses that need a professional online presence fast.</p>
-            <ul class="price-features">
-              <li>1-page website</li>
-              <li>Mobile-responsive design</li>
-              <li>Contact form</li>
-              <li>Basic SEO setup</li>
-              <li>Delivered in 5–7 days</li>
-              <li>1 round of revisions</li>
-            </ul>
-            <a href="#contact" class="btn-price">Get Started →</a>
-          </article>
-
-          <article class="price-card featured reveal">
-            <div class="price-popular">Most popular</div>
-            <div class="price-tag">Business</div>
-            <div class="price-amount">€1,400</div>
-            <p class="price-desc">A full business website built to look professional and drive real inquiries.</p>
-            <ul class="price-features">
-              <li>5-page custom website</li>
-              <li>Mobile-first design</li>
-              <li>Contact form + click-to-call</li>
-              <li>SEO optimization</li>
-              <li>Google Analytics setup</li>
-              <li>Delivered in 1–2 weeks</li>
-              <li>2 rounds of revisions</li>
-            </ul>
-            <a href="#contact" class="btn-price btn-price-main">Get Started →</a>
-          </article>
-
-          <article class="price-card reveal">
-            <div class="price-tag">Growth</div>
-            <div class="price-amount">€2,500+</div>
-            <p class="price-desc">For businesses ready to grow online with advanced features and integrations.</p>
-            <ul class="price-features">
-              <li>8–10 page website</li>
-              <li>Custom design, not template</li>
-              <li>Online booking integration</li>
-              <li>Blog or news section</li>
-              <li>Advanced SEO setup</li>
-              <li>Delivered in 2–3 weeks</li>
-              <li>3 rounds of revisions</li>
-              <li>30 days of support</li>
-            </ul>
-            <a href="#contact" class="btn-price">Get Started →</a>
-          </article>
+        <div class="lx-cost rise">
+          <span class="n">02</span>
+          <h4>Infra + API / month</h4>
+          <p>Hosting on EU servers and the LLM tokens it burns. The slider above is exactly this number. Often a few euros for a cached FAQ bot; more as context and tool-use grow.</p>
+          <p class="tag">Pass-through, no markup games.</p>
         </div>
-
-        <p class="pricing-note reveal">All prices are project-based. 50% deposit to start, 50% before launch. Need something custom? <a href="#contact">Let's talk.</a></p>
-      </div>
-    </section>
-
-    <!-- WHY LMLABS -->
-    <section id="about" class="why-section">
-      <div class="container">
-        <div class="reveal section-head">
-          <div class="section-label">Why LMLabs</div>
-          <h2 class="section-title">A Clean, Fast, Conversion-Focused Approach</h2>
-          <p class="section-sub">If your website looks outdated, loads slowly, or makes it hard for people to contact you, it can quietly cost you business. LMLabs focuses on fixing that.</p>
-        </div>
-
-        <div class="why-grid">
-          <div class="why-item reveal">
-            <div class="why-check">✓</div>
-            <div><h4>Designed to Get Action</h4><p>Clear messaging, strong CTA placement, and sections built to guide visitors toward calling or submitting a form.</p></div>
-          </div>
-          <div class="why-item reveal">
-            <div class="why-check">✓</div>
-            <div><h4>Direct Communication</h4><p>You speak directly with the person building your site. Faster decisions, less confusion, better results.</p></div>
-          </div>
-          <div class="why-item reveal">
-            <div class="why-check">✓</div>
-            <div><h4>Fast Turnaround</h4><p>Most projects completed in 1–2 weeks. Great for businesses that want to improve their online presence without dragging things out.</p></div>
-          </div>
-          <div class="why-item reveal">
-            <div class="why-check">✓</div>
-            <div><h4>Built for Trust</h4><p>Modern layout, clean typography, consistent design, and a professional feel from the first screen.</p></div>
-          </div>
-          <div class="why-item reveal">
-            <div class="why-check">✓</div>
-            <div><h4>Mobile-First</h4><p>Most visitors arrive on mobile. The layout is built to be easy to scan and easy to contact from a phone.</p></div>
-          </div>
-          <div class="why-item reveal">
-            <div class="why-check">✓</div>
-            <div><h4>No Lock-In</h4><p>You own your website. No monthly fees required. Optional maintenance plans available if you want ongoing support.</p></div>
-          </div>
+        <div class="lx-cost rise">
+          <span class="n">03</span>
+          <h4>Managed service / month</h4>
+          <p>We keep it alive — uptime monitoring, bug fixes, content updates, prompt tuning, model upgrades, usage reports. Three levels (Support → Improvements → Growth); pick what fits.</p>
+          <p class="tag">Optional. You own the bot either way.</p>
         </div>
       </div>
     </section>
 
     <!-- PROCESS -->
-    <section id="process">
-      <div class="container">
-        <div class="reveal section-head">
-          <div class="section-label">How It Works</div>
-          <h2 class="section-title">From First Contact to Launch in 4 Steps</h2>
-        </div>
-
-        <div class="process-grid">
-          <article class="process-card reveal">
-            <span class="process-number">01</span>
-            <h3>Free Consultation</h3>
-            <p>We talk about your business, your audience, and what you want your website to achieve. No commitment.</p>
-          </article>
-          <article class="process-card reveal">
-            <span class="process-number">02</span>
-            <h3>Structure & Direction</h3>
-            <p>I plan the page flow, content sections, and CTA structure around your business goals. You approve before anything is built.</p>
-          </article>
-          <article class="process-card reveal">
-            <span class="process-number">03</span>
-            <h3>Design & Build</h3>
-            <p>Your site is built to feel premium, load fast, and make it easy for people to contact you. You review and give feedback.</p>
-          </article>
-          <article class="process-card reveal">
-            <span class="process-number">04</span>
-            <h3>Launch & Handoff</h3>
-            <p>Final revisions, domain setup, analytics connected, and your site goes live. You get full ownership.</p>
-          </article>
-        </div>
+    <section class="lx-band wrap">
+      <div class="lx-head rise">
+        <span class="kicker">How it goes</span>
+        <h2>From first call to live in five steps</h2>
+      </div>
+      <div class="lx-flow">
+        <div class="lx-step rise"><div class="s">1</div><h4>Scope call</h4><p>What should it deflect or do? We pick the tier and the model together. No commitment.</p></div>
+        <div class="lx-step rise"><div class="s">2</div><h4>Flow &amp; content</h4><p>We map the conversation and gather your FAQ, docs, or system access. You approve the flow.</p></div>
+        <div class="lx-step rise"><div class="s">3</div><h4>Build &amp; tune</h4><p>Prompting, retrieval or tool-calling, brand voice. You test it on a staging link.</p></div>
+        <div class="lx-step rise"><div class="s">4</div><h4>Integrate</h4><p>Calendar, CRM, e-shop — wired with scoped credentials and an audit log. Sandbox first.</p></div>
+        <div class="lx-step rise"><div class="s">5</div><h4>Launch &amp; watch</h4><p>One script tag goes live. We monitor the first weeks and tighten anything that misfires.</p></div>
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section id="work">
-      <div class="container">
-        <div class="reveal section-head">
-          <div class="section-label">Sample Work</div>
-          <h2 class="section-title">What Your Website Could Look Like</h2>
-          <p class="section-sub">These showcase the style, structure, and conversion-focused approach LMLabs uses for every project. Each one is built to drive a specific business action.</p>
-        </div>
-
-        <div class="portfolio-grid">
-          <article class="project-card p1 reveal">
-            <div class="project-img"><div class="overlay"><div class="mock">BARBER</div></div></div>
-            <div class="project-body">
-              <div class="project-tag">Barbershop</div>
-              <h3>Local Barbershop Website</h3>
-              <p>Clean layout with online booking CTA, service list, location info, and click-to-call. Built to increase walk-ins and calls.</p>
-              <div class="project-result">Goal: more calls + bookings</div>
-            </div>
-          </article>
-          <article class="project-card p2 reveal">
-            <div class="project-img"><div class="overlay"><div class="mock">LEGAL</div></div></div>
-            <div class="project-body">
-              <div class="project-tag">Law Firm</div>
-              <h3>Law Firm Landing Page</h3>
-              <p>Trust-oriented page structure with service overview, authority messaging, consultation CTA, and strong contact access.</p>
-              <div class="project-result">Goal: consultation requests</div>
-            </div>
-          </article>
-          <article class="project-card p3 reveal">
-            <div class="project-img"><div class="overlay"><div class="mock">FIT</div></div></div>
-            <div class="project-body">
-              <div class="project-tag">Fitness</div>
-              <h3>Fitness Studio Website</h3>
-              <p>Fast promotional site with membership CTA, class section, pricing highlights, and conversion-focused homepage flow.</p>
-              <div class="project-result">Goal: membership sign-ups</div>
-            </div>
-          </article>
-          <article class="project-card p4 reveal">
-            <div class="project-img"><div class="overlay"><div class="mock">HOME</div></div></div>
-            <div class="project-body">
-              <div class="project-tag">Home Services</div>
-              <h3>Local Home Services Site</h3>
-              <p>Lead-generation website for a service business with click-to-call actions, service areas, and quote request form.</p>
-              <div class="project-result">Goal: quote requests</div>
-            </div>
-          </article>
-        </div>
+    <!-- WHY -->
+    <section class="lx-band wrap">
+      <div class="lx-head rise">
+        <span class="kicker">Why us, specifically</span>
+        <h2>Built the boring-but-important way</h2>
       </div>
-    </section>
-
-    <!-- FOUNDER -->
-    <section class="founder-section">
-      <div class="container">
-        <div class="founder-card reveal">
-          <div>
-            <div class="section-label">About LMLabs</div>
-            <h2 class="section-title founder-title">You Work Directly With the Developer</h2>
-            <p class="founder-text">LMLabs is a focused web development practice helping businesses build a stronger online presence. No account managers, no agency overhead — you talk directly with the person who designs and codes your site.</p>
-            <p class="founder-text" style="margin-top:14px;">Instead of hiding behind fake testimonials or inflated results, LMLabs builds trust the honest way: quality work, clear communication, and fair pricing. Based in Greece, working with businesses anywhere.</p>
-            <div class="founder-stats">
-              <div class="founder-stat">
-                <span>📍</span> Based in Greece
-              </div>
-              <div class="founder-stat">
-                <span>⚡</span> 1–2 week delivery
-              </div>
-              <div class="founder-stat">
-                <span>💬</span> Direct communication
-              </div>
-            </div>
-          </div>
+      <div class="lx-why">
+        <div class="lx-why__item rise">
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div><h4>EU-hosted, GDPR by default</h4><p>Hetzner servers in Germany. Customer conversations don’t take a trip across the Atlantic for no reason.</p></div>
         </div>
-      </div>
-    </section>
-
-    <!-- CTA BANNER -->
-    <section>
-      <div class="container">
-        <div class="cta-banner reveal">
-          <div class="urgency">🔥 Limited availability this month</div>
-          <h2>Ready to Improve Your Online Presence?</h2>
-          <p>If your business needs a website that looks trustworthy and helps turn visitors into real inquiries, let's talk. Free consultation, no commitment.</p>
-          <div class="cta-actions">
-            <a class="btn-white" href="#contact">Get a Free Quote →</a>
-            <a class="btn-white btn-white-alt" href="tel:+30683678188">Call +30 683 678 188</a>
-          </div>
+        <div class="lx-why__item rise">
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div><h4>Greek-first, not Greek-as-afterthought</h4><p>We default to Claude because it handles Greek tone and RAG well. Cheap open models only where the volume justifies it.</p></div>
+        </div>
+        <div class="lx-why__item rise">
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div><h4>We’ve shipped RAG before</h4><p>The retrieval stack here isn’t our first rodeo — we built one for Mnema. Embeddings and pgvector run on our side, not a black box.</p></div>
+        </div>
+        <div class="lx-why__item rise">
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div><h4>Agentic, but careful</h4><p>Credentials encrypted in a secrets manager, least-privilege scopes, rate limiting, and an audit line for every action the bot takes.</p></div>
+        </div>
+        <div class="lx-why__item rise">
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div><h4>Works with what you run</h4><p>Soft1, Entersoft, Epsilon, Megasoft on the ERP side; Cal.com or Google for calendars. No system? We stand one up.</p></div>
+        </div>
+        <div class="lx-why__item rise">
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div><h4>One person, start to finish</h4><p>No account manager relay. The person scoping the bot is the one building it and the one you message when something’s off.</p></div>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq">
-      <div class="container">
-        <div class="reveal section-head">
-          <div class="section-label">FAQ</div>
-          <h2 class="section-title">Common Questions</h2>
-        </div>
-
-        <div class="faq-list">
-          <details class="faq-item reveal">
-            <summary>How long does a website take?</summary>
-            <p>A landing page can be done in about 5–7 days. A full business website typically takes 1–2 weeks. Growth packages with more pages and features take 2–3 weeks.</p>
-          </details>
-          <details class="faq-item reveal">
-            <summary>What do I need to provide?</summary>
-            <p>Your business information, logo (if you have one), photos you'd like to use, and an idea of what you want the site to achieve. I handle the rest — structure, design, copy suggestions, and build.</p>
-          </details>
-          <details class="faq-item reveal">
-            <summary>Can you redesign my current website?</summary>
-            <p>Yes. If you already have a website but it feels outdated, slow, or unclear, it can be redesigned with a stronger structure and better conversion flow. Same pricing applies.</p>
-          </details>
-          <details class="faq-item reveal">
-            <summary>Will my website work well on mobile?</summary>
-            <p>Yes. Mobile-first design is a core priority. Every site is built and tested to look great and convert well on phones, tablets, and desktops.</p>
-          </details>
-          <details class="faq-item reveal">
-            <summary>Do you help with domain and hosting?</summary>
-            <p>Yes. LMLabs can help set up your domain, hosting, and get everything connected so your site goes live properly.</p>
-          </details>
-          <details class="faq-item reveal">
-            <summary>What if I don't like the design?</summary>
-            <p>Every package includes revision rounds. I show you a mockup or preview before building the final version, and we iterate until you're happy. Nothing launches without your approval.</p>
-          </details>
-          <details class="faq-item reveal">
-            <summary>Do I own the website?</summary>
-            <p>Yes. You own everything — the design, the code, the content. There's no lock-in and no required monthly fees. Optional maintenance is available if you want ongoing support.</p>
-          </details>
-          <details class="faq-item reveal">
-            <summary>How do I pay?</summary>
-            <p>50% deposit to start the project, 50% before launch. For larger projects (€2,500+), we can split it into 3 payments. Bank transfer or PayPal accepted.</p>
-          </details>
-        </div>
+    <section class="lx-band wrap" id="faq">
+      <div class="lx-head rise">
+        <span class="kicker">Straight answers</span>
+        <h2>Questions we get a lot</h2>
+      </div>
+      <div class="lx-faq">
+        <details class="rise"><summary>Will the bot make stuff up?</summary><p>A FAQ or RAG bot answers from content you give it and is told to say “I don’t know, here’s how to reach a human” when it’s out of scope. Hallucination risk drops sharply when the model is grounded in retrieved text instead of free-styling. We test the edges before launch.</p></details>
+        <details class="rise"><summary>Do you need our passwords?</summary><p>Tiers 1 and 2, basically no — a FAQ bot holds zero credentials, a wizard needs calendar/email access. Only the agentic tier touches real systems, and there we use scoped, least-privilege keys stored encrypted, with every action logged so you can audit what it did.</p></details>
+        <details class="rise"><summary>How much will the AI cost per month to run?</summary><p>For most small-business bots, single-digit to low-double-digit euros a month — see the slider above. It climbs with heavy context (RAG) or tool-use (agentic). Prompt caching makes repetitive FAQ traffic dramatically cheaper. It’s usually the smallest line on the invoice.</p></details>
+        <details class="rise"><summary>Can it speak Greek properly?</summary><p>Yes — that’s the point of defaulting to Claude. It handles Greek tone, formal/informal register, and code-switching mid-sentence. Greek runs a touch more tokens than English, which the estimate already assumes.</p></details>
+        <details class="rise"><summary>We already have a website. Do we need a new one?</summary><p>No. The chatbot drops onto your existing site with one script tag. We only build a site if you want one or the current one is holding the bot back.</p></details>
+        <details class="rise"><summary>What if we outgrow the tier we start on?</summary><p>That’s the plan. Every tier upgrades into the next without a rebuild — a FAQ bot becomes a RAG bot when your content grows, a wizard becomes agentic when you’re ready to let it take actions. You only pay the difference.</p></details>
+        <details class="rise"><summary>Do we own it?</summary><p>Yes. The build is yours. The managed-service subscription is optional — drop it whenever, the bot is still yours. No lock-in.</p></details>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact-section">
-      <div class="container">
-        <div class="reveal section-head">
-          <div class="section-label">Get In Touch</div>
-          <h2 class="section-title">Let's Talk About Your Website</h2>
-        </div>
+    <!-- ===================================================================
+         CONTACT. TODO:contact — phone + email below are placeholders.
+         Form posts via app.js → Formspree (swap endpoint for the real inbox).
+         =================================================================== -->
+    <section class="lx-band wrap" id="contact">
+      <div class="lx-contact">
+        <div class="rise">
+          <span class="kicker">Get in touch</span>
+          <h3 style="margin-top:14px">Tell us what you’re drowning in.</h3>
+          <p class="muted">The repetitive questions, the no-shows, the order-status calls — whatever
+            it is, there’s probably a tier for it. Drop a line and we’ll reply within a business day,
+            usually with a question or two before quoting anything.</p>
 
-        <div class="contact-wrapper">
-          <div class="contact-info reveal">
-            <h3>Start with a free consultation.</h3>
-            <p>Tell me about your business and what you need. I'll reply within 24 hours with next steps and a quote direction. No pressure, no commitment.</p>
-
-            <div class="contact-item">
-              <div class="contact-icon">📞</div>
-              <div>
-                <h4>Call or WhatsApp</h4>
-                <p><a href="tel:+30683678188">+30 683 678 188</a></p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon">✉️</div>
-              <div>
-                <h4>Email</h4>
-                <p><a href="mailto:lmlabs.dev@gmail.com">lmlabs.dev@gmail.com</a></p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon">📍</div>
-              <div>
-                <h4>Based In</h4>
-                <p>Greece — working with businesses anywhere</p>
-              </div>
-            </div>
+          <div class="lx-channel">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <!-- TODO:contact — real phone / WhatsApp -->
+            <div><b>Call or WhatsApp</b><span>+30 — — — &nbsp;(set in index.html)</span></div>
           </div>
-
-          <form class="contact-form reveal" id="contactForm">
-            <div class="form-row">
-              <input type="text" id="name" name="name" placeholder="Your Name" required>
-              <input type="email" id="email" name="email" placeholder="Email Address" required>
-            </div>
-            <input type="text" id="business" name="business" placeholder="Business Name">
-            <select id="package" name="package">
-              <option value="">Interested in... (optional)</option>
-              <option value="starter">Starter — €700</option>
-              <option value="business">Business — €1,400</option>
-              <option value="growth">Growth — €2,500+</option>
-              <option value="redesign">Website Redesign</option>
-              <option value="other">Not sure yet</option>
-            </select>
-            <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
-            <button class="btn-primary" type="submit">Get My Free Quote →</button>
-            <p class="form-note">Your message will be sent directly. I'll reply within 24 hours.</p>
-          </form>
+          <div class="lx-channel">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg></span>
+            <!-- TODO:contact — real email -->
+            <div><b>Email</b><span>hello@your-domain &nbsp;(set in index.html)</span></div>
+          </div>
+          <div class="lx-channel">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><b>Based in</b><span>Greece — working remotely with EU businesses</span></div>
+          </div>
         </div>
+
+        <form class="lx-form rise" id="leadForm" novalidate>
+          <div class="two">
+            <input type="text" id="f-name" name="name" placeholder="Your name" autocomplete="name">
+            <input type="email" id="f-email" name="email" placeholder="Email" autocomplete="email">
+          </div>
+          <input type="text" id="f-company" name="company" placeholder="Business name (optional)" autocomplete="organization">
+          <select id="f-tier" name="tier">
+            <option value="">What are you after? (optional)</option>
+            <option value="faq">FAQ widget — answer the same questions</option>
+            <option value="wizard">Wizard — book appointments / qualify leads</option>
+            <option value="rag">Smart / RAG — answer from our documents</option>
+            <option value="agentic">Agentic — take actions in our systems</option>
+            <option value="website">A website (with or without a bot)</option>
+            <option value="unsure">Not sure yet — help me pick</option>
+          </select>
+          <textarea id="f-message" name="message" placeholder="What's the repetitive thing you'd love to hand off? A couple of sentences is plenty."></textarea>
+          <button type="submit" class="lx-btn lx-cta">Send it →</button>
+          <p class="lx-form__note">We reply within one business day. No spam, no drip sequence — just a human.</p>
+        </form>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <p class="logo">LM<span>Labs</span></p>
-        <p>© 2026 LMLabs. All rights reserved.</p>
-        <div class="footer-links">
-          <a href="#services">Services</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#work">Work</a>
-          <a href="#contact">Contact</a>
-        </div>
+  <footer class="lx-foot">
+    <div class="wrap lx-foot__in">
+      <a href="#top" class="lx-logo" style="font-size:1.2rem">
+        <span><b>Lógos</b><span class="ai">AI</span></span>
+      </a>
+      <small>© <span id="yr">2026</span> LógosAI — chatbots, AI agents &amp; websites. Athens.</small>
+      <div class="row" style="gap:20px;flex-wrap:wrap">
+        <a href="#build">What we build</a>
+        <a href="#tiers">Tiers</a>
+        <a href="#demo">Demo</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   </footer>
 
-  <div class="mobile-sticky-cta">
-    <a href="#contact">Get a Free Quote</a>
-    <a href="tel:+30683678188">Call Now</a>
+  <!-- mobile-only quick actions; TODO:contact — phone -->
+  <div class="lx-stickybar">
+    <a href="#contact">Book a call</a>
+    <a href="tel:+30000000000">Call</a>
   </div>
 
-  <script src="scripts.js"></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/estimator.js" defer></script>
 </body>
 </html>
