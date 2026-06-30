@@ -1,7 +1,8 @@
 /* LógosAI — app.js
  * UI plumbing: sticky nav, mobile drawer, scroll-reveal, the bot iframe
- * loader handoff, and the lead form (Formspree). Estimator lives in its own
- * file so we can lazy-swap the pricing model without touching this.
+ * loader handoff, and the lead form (Formspree). The EL/EN swap lives in
+ * i18n.js; the few strings this file builds at runtime (the form's states)
+ * come back through window.LX_I18N so they follow the chosen language too.
  *
  * Heads-up for whoever picks this up next: the lead form posts to Formspree
  * for now (FORM_ENDPOINT below). When the LógosAI inbox / CRM webhook is
@@ -9,6 +10,12 @@
  */
 (function () {
   'use strict';
+
+  // current-language string for the bits we render here; falls back to the
+  // key (then English inside LX_I18N) if i18n.js somehow didn't load.
+  var t = function (key) {
+    return window.LX_I18N ? window.LX_I18N.t(key) : key;
+  };
 
   // TODO(LM): replace with the LógosAI Formspree form id once the new inbox
   // is verified. Until then this points at the old LMLabs endpoint so test
@@ -100,7 +107,7 @@
       var btn = $('button[type="submit"]', form);
       var label = btn.textContent;
       btn.disabled = true;
-      btn.textContent = 'Sending…';
+      btn.textContent = t('form.sending');
 
       var payload = {
         name: name.value.trim(),
@@ -118,12 +125,11 @@
         body: JSON.stringify(payload)
       }).then(function (res) {
         if (!res.ok) throw new Error('Formspree responded ' + res.status);
+        var firstName = escapeHtml(payload.name.split(' ')[0]);
         form.innerHTML =
           '<div class="lx-form__ok">' +
-          '<h3>Got it ✓</h3>' +
-          '<p class="muted">Thanks ' + escapeHtml(payload.name.split(' ')[0]) +
-          '. We read every message ourselves — expect a reply within one business day, ' +
-          'usually with a couple of questions about your use case before any number gets quoted.</p>' +
+          '<h3>' + t('form.ok.title') + '</h3>' +
+          '<p class="muted">' + t('form.ok.body').replace('{name}', firstName) + '</p>' +
           '</div>';
       }).catch(function (err) {
         // don't swallow it — log for us, tell them what to do instead
@@ -133,7 +139,7 @@
         var warn = $('.lx-form__note', form);
         if (warn) {
           warn.style.color = '#ff8f87';
-          warn.textContent = 'Hmm, that didn’t send (an adblocker can do this). Email us directly and we’ll pick it up.';
+          warn.textContent = t('form.err');
         }
       });
     });

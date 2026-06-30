@@ -8,8 +8,26 @@ folder.
 index.html              ← the page (one file, all sections)
 assets/
   css/main.css          ← design system + components (prefix `lx-`)
+  js/i18n.js            ← EL/EN swap: Greek dictionary + tiny apply/toggle engine
   js/app.js             ← nav, drawer, scroll-reveal, bot-iframe loader, lead form
 ```
+
+## Bilingual (Ελληνικά / English)
+
+English is the source of truth and lives inline in `index.html`. Greek is an
+override layer in `assets/js/i18n.js`, keyed by attributes on the markup:
+
+- `data-i18n="key"` → swaps `innerHTML`
+- `data-i18n-ph="key"` → swaps an input/textarea `placeholder`
+- `data-i18n-aria="key"` → swaps an `aria-label`
+
+The English baseline is captured on first load, so switching back to EN just
+restores it — you only ever write Greek in the dictionary. First visit follows
+the browser (`el-*` → Greek, otherwise English); the EN/ΕΛ toggle in the nav and
+drawer remembers the choice in `localStorage`. The few strings `app.js` builds at
+runtime (form sending/success/error) read from `window.LX_I18N` so they follow the
+language too. **To add a string:** put the English in `index.html` with a
+`data-i18n` key, then add the same key with the Greek text to `EL` in `i18n.js`.
 
 ## Before going live — checklist
 
@@ -30,10 +48,10 @@ Flat **monthly subscription + one-off setup**, four tiers with sub-tiers:
 
 | Tier | Sub-tiers | Monthly | Setup |
 |------|-----------|---------|-------|
-| 1 · Questions | Essential / Pro | €19 / €39 | €120 / €150 |
-| 2 · Bookings | Standard / Plus | €59 / €79 | €250 / €290 |
-| 3 · Sales / lead-gen | Full | €159 (range €149–190) | €450 |
-| 4 · Full Agent | Custom | from €290 (by quote) | from €800 |
+| 1 · Questions | Essential / Pro | €29 / €49 | €200 / €250 |
+| 2 · Bookings | Standard / Plus | €79 / €99 | €400 / €450 |
+| 3 · Sales / lead-gen | Full | €199 (range €190–250) | €700 |
+| 4 · Full Agent | Custom | from €390 (by quote) | from €1200 |
 
 Plus add-ons (channels, extra language, integrations, analytics, priority) and
 discounts (annual −16%, seasonal pause, upgrade credit). The subscription bundles
