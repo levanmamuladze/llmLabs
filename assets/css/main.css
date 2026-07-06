@@ -331,12 +331,14 @@ body.lx-noscroll{overflow:hidden}
 .tier-wizard::after{background:linear-gradient(90deg,var(--sky),transparent)}
 .tier-sales::after{background:linear-gradient(90deg,var(--indigo),transparent)}
 .tier-agentic::after{background:linear-gradient(90deg,var(--amber),transparent)}
-.lx-tier__head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+/* flex-wrap: το ελληνικό «Κατόπιν προσφοράς» δεν χωρά δίπλα στο tier label σε κάρτα 4 στηλών */
+.lx-tier__head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px 10px;margin-bottom:4px}
 .lx-tier__no{font-family:'Outfit';font-size:.72rem;color:var(--faint);letter-spacing:.12em;text-transform:uppercase}
 .lx-tier h3{font-size:1.28rem;margin:8px 0 8px}
 .lx-tier .what{color:var(--muted);font-size:.87rem}
 .lx-plans{display:flex;flex-direction:column;gap:10px;margin-top:18px;flex-grow:1}
-.lx-plan{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px 14px;border:1px solid var(--line-soft);border-radius:var(--r-sm);background:rgba(255,255,255,.02);transition:border-color .2s,background .2s}
+.lx-plan{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:6px 12px;padding:12px 14px;border:1px solid var(--line-soft);border-radius:var(--r-sm);background:rgba(255,255,255,.02);transition:border-color .2s,background .2s}
+.lx-plan__name{flex:1 1 140px;min-width:0}
 .lx-plan:hover{border-color:var(--line-2);background:rgba(255,255,255,.04)}
 .lx-plan__name b{display:block;font-size:.92rem}
 .lx-plan__name span{display:block;color:var(--faint);font-size:.77rem;margin-top:2px}
