@@ -12,10 +12,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LógosAI — Chatbots, AI Agents & Websites for Greek businesses</title>
-  <meta name="description" content="LógosAI designs conversational chatbots, action-taking AI agents, and the websites they live on. Greek-first, EU-hosted, Claude-powered. Live demo on the page.">
+  <meta name="description" content="LógosAI designs conversational chatbots, action-taking AI agents, and the websites they live on. Greek-first, bilingual EL/EN. Live demos on the page.">
   <meta name="theme-color" content="#07080d">
   <meta property="og:title" content="LógosAI — Bots that answer, agents that act">
-  <meta property="og:description" content="From a one-script FAQ widget to a RAG knowledge base to a full agentic assistant that books, checks orders and updates your CRM. Try the live bot.">
+  <meta property="og:description" content="From a one-script FAQ widget to a step-by-step booking assistant — and custom agents beyond. Try the live demos on the page.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body id="top">
+
+  <a class="lx-skip" href="#build" data-i18n="a11y.skip">Skip to content</a>
 
   <nav class="lx-nav" id="nav">
     <div class="lx-nav__in">
@@ -80,7 +82,7 @@
         <p class="sub" data-i18n="hero.sub">
           We take the repetitive questions, the no-shows and the order-status calls off your plate —
           with a Greek-first assistant that answers 24/7 and books, checks orders and updates your CRM
-          on its own. EU-hosted, built on Claude, live in days.
+          on its own. Grounded in your content, live in days.
         </p>
         <div class="lx-stage__actions">
           <a href="#demo" class="lx-btn lx-cta" data-i18n="hero.cta1">Talk to the live bot →</a>
@@ -88,7 +90,7 @@
         </div>
         <div class="lx-stage__meta">
           <span data-i18n="hero.meta1"><b>1–3 days</b> for a FAQ widget</span>
-          <span data-i18n="hero.meta2"><b>EU servers</b> · GDPR covered</span>
+          <span data-i18n="hero.meta2"><b>Flat pricing</b> · no usage fees</span>
           <span data-i18n="hero.meta3"><b>Direct</b> — you talk to the dev</span>
         </div>
       </div>
@@ -112,7 +114,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.7-.8L3 21l1.8-5.4A8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>
           </div>
           <h3 data-i18n="build.c1.h3">Conversational chatbots</h3>
-          <p data-i18n="build.c1.p">The widget that answers ωράρια, τιμές, “πού είστε;” — and the smarter ones that read your whole knowledge base before replying.</p>
+          <p data-i18n="build.c1.p">The widget that answers ωράρια, τιμές, “πού είστε;” — grounded in your own content, so answers come from you, not thin air.</p>
           <ul>
             <li data-i18n="build.c1.li1">One &lt;script&gt; tag, drops into any site</li>
             <li data-i18n="build.c1.li2">Greek + English in the same thread</li>
@@ -125,7 +127,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/><circle cx="12" cy="12" r="4"/></svg>
           </div>
           <h3 data-i18n="build.c2.h3">AI agents that do things</h3>
-          <p data-i18n="build.c2.p">Not just talk — act. Books the appointment, checks order status, files the return, pushes the lead into your CRM. Tool-calling with an audit log on every action.</p>
+          <p data-i18n="build.c2.p">Not just talk — act. Books the appointment, checks order status, files the return, pushes the lead into your CRM. Scoped access, every action traceable — designed per project.</p>
           <ul>
             <li data-i18n="build.c2.li1">Calendar, e-shop, CRM, payment, SMS</li>
             <li data-i18n="build.c2.li2">Scoped, read-only credentials by default</li>
@@ -149,30 +151,66 @@
     </section>
 
     <!-- ===================================================================
-         LIVE DEMO band. The one live bot on the page — full-width here so it
-         has room to breathe.
+         LIVE DEMO — scenario gallery. Each card opens a real, working bot in
+         an accessible modal (app.js lazy-loads the iframe on open). Nothing
+         cold-starts until a visitor explicitly picks a scenario.
          =================================================================== -->
     <section class="lx-band wrap" id="demo">
       <div class="lx-head rise">
         <span class="kicker" data-i18n="demo.kicker">Live, not a mockup</span>
-        <h2 data-i18n="demo.h2">This is a real FAQ-tier bot. Ask it something.</h2>
-        <p class="lede" data-i18n="demo.lede">
-          The widget below is one we host — the same stack we’d ship you, embedded with a
-          single script tag. It’s a Tier-1 FAQ build, so it answers from a fixed knowledge set and
-          holds no credentials. Push it: ask about hours, pricing, what it can’t do.
-          <a class="lx-link" href="https://chat-bot-henna-mu.vercel.app/" target="_blank" rel="noopener">Open it full-screen ↗</a>
-        </p>
+        <h2 data-i18n="demo.h2">Pick a business. Talk to its bot.</h2>
+        <p class="lede" data-i18n="demo.lede">These are real, working bots — the exact experience we’d ship you, on sample data.
+          Choose the scenario closest to your business and try it live, right here on the page.</p>
       </div>
 
-      <div class="lx-botframe rise" style="max-width:760px;margin:0 auto">
-        <div class="lx-botframe__bar"><i></i><i></i><i></i><span>chat-bot-henna-mu.vercel.app</span></div>
-        <div class="lx-botframe__stage" style="height:560px">
-          <div class="lx-botframe__load" id="botLoad">
-            <div><div class="lx-spin"></div><p style="margin-top:12px" data-i18n="demo.loading">waking the demo bot…</p></div>
+      <div class="lx-gallery">
+        <article class="lx-scenario rise" data-demo="restaurant">
+          <div class="lx-scenario__top">
+            <span class="lx-scenario__ic" aria-hidden="true">🍽️</span>
+            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.live">Live</span></span>
           </div>
-          <iframe id="botFrame" src="https://chat-bot-henna-mu.vercel.app/" title="LógosAI live FAQ bot demo"
-                  loading="lazy" referrerpolicy="no-referrer"></iframe>
-        </div>
+          <span class="lx-scenario__tier" data-i18n="scn.r.tier">Tier 1 · FAQ</span>
+          <h3 data-i18n="scn.r.h3">Taverna “Το Κύμα”</h3>
+          <p data-i18n="scn.r.p">A seaside taverna’s assistant — hours, the day’s fish, reservations, allergens, parking. Answers freely in Greek or English.</p>
+          <ul class="lx-scenario__does">
+            <li data-i18n="scn.r.li1">Answers from one content file</li>
+            <li data-i18n="scn.r.li2">Greek + English in one chat</li>
+            <li data-i18n="scn.r.li3">Hands off to the phone when unsure</li>
+          </ul>
+          <button type="button" class="lx-btn lx-cta lx-scenario__cta" data-demo-open="restaurant" data-i18n="scn.try">Try this demo →</button>
+        </article>
+
+        <article class="lx-scenario rise" data-demo="clinic">
+          <div class="lx-scenario__top">
+            <span class="lx-scenario__ic" aria-hidden="true">🏥</span>
+            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.live">Live</span></span>
+          </div>
+          <span class="lx-scenario__tier" data-i18n="scn.c.tier">Tier 2 · Bookings</span>
+          <h3 data-i18n="scn.c.h3">Clinic “Γαλήνη”</h3>
+          <p data-i18n="scn.c.p">A dental clinic’s receptionist — walks you to a real appointment (service → day → time → details) and answers questions on the way.</p>
+          <ul class="lx-scenario__does">
+            <li data-i18n="scn.c.li1">Live slots from the schedule</li>
+            <li data-i18n="scn.c.li2">Booking code on confirm</li>
+            <li data-i18n="scn.c.li3">Chats while it books</li>
+          </ul>
+          <button type="button" class="lx-btn lx-cta lx-scenario__cta" data-demo-open="clinic" data-i18n="scn.try">Try this demo →</button>
+        </article>
+
+        <article class="lx-scenario rise" data-demo="eshop">
+          <div class="lx-scenario__top">
+            <span class="lx-scenario__ic" aria-hidden="true">🛒</span>
+            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.real">Real client</span></span>
+          </div>
+          <span class="lx-scenario__tier" data-i18n="scn.e.tier">Tier 1 · In production</span>
+          <h3 data-i18n="scn.e.h3">Χαραλαμπίδη — linens e-shop</h3>
+          <p data-i18n="scn.e.p">A real bot we built and run for a Thessaloniki bed-linens shop — product advice, sizes, prices, care, returns. Live on their site today.</p>
+          <ul class="lx-scenario__does">
+            <li data-i18n="scn.e.li1">Recommends by size &amp; budget</li>
+            <li data-i18n="scn.e.li2">One script tag on their site</li>
+            <li data-i18n="scn.e.li3">Sales-tuned, not just FAQ</li>
+          </ul>
+          <button type="button" class="lx-btn lx-cta lx-scenario__cta" data-demo-open="eshop" data-i18n="scn.try">Try this demo →</button>
+        </article>
       </div>
     </section>
 
@@ -185,8 +223,8 @@
       <div class="lx-stats rise">
         <div class="lx-stat"><b>24/7</b><span data-i18n="proof.s1">Always-on answering — even after you’ve closed</span></div>
         <div class="lx-stat"><b data-i18n="proof.b2">1–3 days</b><span data-i18n="proof.s2">From scope call to a live FAQ widget</span></div>
-        <div class="lx-stat"><b>EU-hosted</b><span data-i18n="proof.s3">Hetzner, Germany · GDPR by default</span></div>
-        <div class="lx-stat"><b>Mnema</b><span data-i18n="proof.s4">Production RAG retrieval we built &amp; run</span></div>
+        <div class="lx-stat"><b data-i18n="proof.b3">3 bots</b><span data-i18n="proof.s3">Live on this page — try them right now</span></div>
+        <div class="lx-stat"><b>100%</b><span data-i18n="proof.s4">You own the build — no lock-in</span></div>
       </div>
 
       <!-- TODO:proof — paste one real testimonial here when the client agrees, then delete this comment.
@@ -217,7 +255,10 @@
       <div class="lx-tierwall">
         <!-- T1 -->
         <article class="lx-tier tier-faq rise">
-          <span class="lx-tier__no" data-i18n="t1.no">TIER 1 · Questions</span>
+          <div class="lx-tier__head">
+            <span class="lx-tier__no" data-i18n="t1.no">TIER 1 · Questions</span>
+            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.livedemo">Live demo</span></span>
+          </div>
           <h3>Bot Ερωτήσεων</h3>
           <p class="what" data-i18n="t1.what">A floating chat bubble that understands free-form questions and answers from
             your content — hours, services, prices, location, policies. Grounded in your material, so
@@ -233,12 +274,16 @@
             </div>
           </div>
           <p class="fit" data-i18n="t1.fit"><b>Ideal for:</b> restaurants, shops, services with frequent questions.</p>
+          <button type="button" class="lx-tier__demo" data-demo-open="restaurant" data-i18n="t1.live">▸ See it live</button>
           <a href="#contact" class="lx-tier__cta" data-i18n="t1.cta">Get my FAQ bot →</a>
         </article>
 
         <!-- T2 -->
         <article class="lx-tier tier-wizard rise">
-          <span class="lx-tier__no" data-i18n="t2.no">TIER 2 · Bookings</span>
+          <div class="lx-tier__head">
+            <span class="lx-tier__no" data-i18n="t2.no">TIER 2 · Bookings</span>
+            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.livedemo">Live demo</span></span>
+          </div>
           <h3>Bot Κρατήσεων</h3>
           <p class="what" data-i18n="t2.what">Walks the visitor to a booking step-by-step (service → day → time → details) while
             answering questions along the way. Free slots come from your own schedule, so they’re never stale;
@@ -254,29 +299,36 @@
             </div>
           </div>
           <p class="fit" data-i18n="t2.fit"><b>Ideal for:</b> clinics, salons, gyms — anything appointment-based.</p>
+          <button type="button" class="lx-tier__demo" data-demo-open="clinic" data-i18n="t2.live">▸ See it live</button>
           <a href="#contact" class="lx-tier__cta" data-i18n="t2.cta">Set up bookings →</a>
         </article>
 
         <!-- T3 (highlighted) -->
-        <article class="lx-tier tier-rag rise lx-tier--star">
-          <span class="lx-tier__no" data-i18n="t3.no">TIER 3 · Sales / lead-gen</span>
+        <article class="lx-tier tier-sales rise">
+          <div class="lx-tier__head">
+            <span class="lx-tier__no" data-i18n="t3.no">TIER 3 · Sales / lead-gen</span>
+            <span class="lx-badge lx-badge--custom" data-i18n="badge.custom">Custom · quoted</span>
+          </div>
           <h3>Bot Πωλήσεων</h3>
           <p class="what" data-i18n="t3.what">Opens the conversation, works out what the visitor wants, qualifies the interest,
             collects contact details and hands the hot lead to a human with a summary of the chat.</p>
           <div class="lx-plans">
             <div class="lx-plan">
               <div class="lx-plan__name"><b>Full</b><span data-i18n="t3.p1.desc">Qualifying scenarios, lead form, sales alert, basic analytics.</span></div>
-              <div class="lx-plan__cost"><span class="mo">€199<small data-i18n="unit.mo">/mo</small></span><span class="set" data-i18n="t3.p1.set">setup €700</span></div>
+              <div class="lx-plan__cost"><span class="mo" data-i18n="t3.mo">from €190<small>/mo</small></span><span class="set" data-i18n="t3.set">setup from €700</span></div>
             </div>
           </div>
-          <p class="lx-plan__range" data-i18n="t3.range">€190–250/mo depending on conversation volume and scenario complexity.</p>
+          <p class="lx-plan__range" data-i18n="t3.range">Quoted per project — depends on conversation volume and scenario complexity.</p>
           <p class="fit" data-i18n="t3.fit"><b>Ideal for:</b> lead-driven services — real estate, insurance, B2B.</p>
-          <a href="#contact" class="lx-tier__cta" data-i18n="t3.cta">Start capturing leads →</a>
+          <a href="#contact" class="lx-tier__cta" data-i18n="t3.cta">Book a scoping call →</a>
         </article>
 
         <!-- T4 -->
         <article class="lx-tier tier-agentic rise">
-          <span class="lx-tier__no" data-i18n="t4.no">TIER 4 · Full agent</span>
+          <div class="lx-tier__head">
+            <span class="lx-tier__no" data-i18n="t4.no">TIER 4 · Full agent</span>
+            <span class="lx-badge lx-badge--custom" data-i18n="badge.custom">Custom · quoted</span>
+          </div>
           <h3>Πλήρης Agent</h3>
           <p class="what" data-i18n="t4.what">Doesn’t just talk — does the job: books into a real calendar, updates your CRM,
             sends SMS/email, even takes payments. Designed around your existing systems.</p>
@@ -288,7 +340,7 @@
           </div>
           <p class="lx-plan__range" data-i18n="t4.range">Always quoted per project — cost is driven by the integrations and the safety checks.</p>
           <p class="fit" data-i18n="t4.fit"><b>Ideal for:</b> businesses with systems that want real automation.</p>
-          <a href="#contact" class="lx-tier__cta" data-i18n="t4.cta">Get a quote →</a>
+          <a href="#contact" class="lx-tier__cta" data-i18n="t4.cta">Plan your integration →</a>
         </article>
       </div>
 
@@ -335,28 +387,16 @@
     <section class="lx-band wrap">
       <div class="lx-head rise">
         <span class="kicker" data-i18n="why.kicker">Why us, specifically</span>
-        <h2 data-i18n="why.h2">Built the boring-but-important way</h2>
+        <h2 data-i18n="why.h2">Engineered to be trusted</h2>
       </div>
       <div class="lx-why">
         <div class="lx-why__item rise">
           <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <div><h4 data-i18n="why.i1.h4">EU-hosted, GDPR by default</h4><p data-i18n="why.i1.p">Hetzner servers in Germany. Customer conversations don’t take a trip across the Atlantic for no reason.</p></div>
-        </div>
-        <div class="lx-why__item rise">
-          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <div><h4 data-i18n="why.i2.h4">Greek-first, not Greek-as-afterthought</h4><p data-i18n="why.i2.p">We default to Claude because it handles Greek tone and RAG well. Cheap open models only where the volume justifies it.</p></div>
-        </div>
-        <div class="lx-why__item rise">
-          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <div><h4 data-i18n="why.i3.h4">We’ve shipped RAG before</h4><p data-i18n="why.i3.p">The retrieval stack here isn’t our first rodeo — we built one for Mnema. Embeddings and pgvector run on our side, not a black box.</p></div>
+          <div><h4 data-i18n="why.i2.h4">Greek-first, not Greek-as-afterthought</h4><p data-i18n="why.i2.p">The model is chosen per client, not one-size-fits-all — premium models where Greek tone and nuance matter most, economical ones where volume justifies it.</p></div>
         </div>
         <div class="lx-why__item rise">
           <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
           <div><h4 data-i18n="why.i4.h4">Agentic, but careful</h4><p data-i18n="why.i4.p">Credentials encrypted in a secrets manager, least-privilege scopes, rate limiting, and an audit line for every action the bot takes.</p></div>
-        </div>
-        <div class="lx-why__item rise">
-          <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <div><h4 data-i18n="why.i5.h4">Works with what you run</h4><p data-i18n="why.i5.p">Soft1, Entersoft, Epsilon, Megasoft on the ERP side; Cal.com or Google for calendars. No system? We stand one up.</p></div>
         </div>
         <div class="lx-why__item rise">
           <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
@@ -375,7 +415,7 @@
         <details class="rise"><summary data-i18n="faq.q1">Will the bot make stuff up?</summary><p data-i18n="faq.a1">It answers from the content you give it and is told to say “I don’t know — here’s how to reach a human” when something’s out of scope. Grounding the model in your own material instead of letting it free-style is exactly what keeps it from inventing hours or prices. We test the edges before launch.</p></details>
         <details class="rise"><summary data-i18n="faq.q2">Do you need our passwords?</summary><p data-i18n="faq.a2">For Tiers 1 and 2, basically no — a Questions bot holds zero credentials, a Bookings bot just needs calendar/email access. Only the full Agent tier touches real systems, and there we use scoped, least-privilege keys stored encrypted, with every action logged so you can audit what it did.</p></details>
         <details class="rise"><summary data-i18n="faq.q3">Are there hidden usage fees on top of the monthly price?</summary><p data-i18n="faq.a3">No. The tier subscription is flat and already bundles hosting and the AI model, so there’s no separate “API bill” that creeps up with traffic. Even on the priciest model our running cost stays well under what the subscription covers — that’s why pricing is based on the value (fewer phone calls, fewer no-shows, 24/7), not on tokens.</p></details>
-        <details class="rise"><summary data-i18n="faq.q4">Can it speak Greek properly?</summary><p data-i18n="faq.a4">Yes — every tier is bilingual EL/EN out of the box and the content is written in Greek. We build on Claude by default because it handles Greek tone and nuance best, and only drop to a more economical model where high conversation volume justifies it.</p></details>
+        <details class="rise"><summary data-i18n="faq.q4">Can it speak Greek properly?</summary><p data-i18n="faq.a4">Yes — every tier is bilingual EL/EN out of the box and the content is written in Greek. We choose the model per client: premium models where Greek tone and nuance matter most, more economical ones where high conversation volume justifies it.</p></details>
         <details class="rise"><summary data-i18n="faq.q5">We already have a website. Do we need a new one?</summary><p data-i18n="faq.a5">No. The chatbot drops onto your existing site with one script tag. We only build a site if you want one or the current one is holding the bot back.</p></details>
         <details class="rise"><summary data-i18n="faq.q6">What if we outgrow the tier we start on?</summary><p data-i18n="faq.a6">That’s the plan. Upgrade anytime — a Questions bot grows into Bookings, Bookings into Sales, and any of them into a full Agent. No rebuild, and we credit the setup fee you already paid against the new tier. Tiers can also be hybrid: e.g. a Questions bot with one booking button borrowed from Tier 2.</p></details>
         <details class="rise"><summary data-i18n="faq.q7">Do we own it?</summary><p data-i18n="faq.a7">Yes. The build is yours. The managed-service subscription is optional — drop it whenever, the bot is still yours. No lock-in.</p></details>
@@ -433,6 +473,25 @@
       </div>
     </section>
   </main>
+
+  <!-- ===================================================================
+       DEMO VIEWER MODAL. app.js injects the iframe (with sandbox) only when a
+       scenario is opened, and removes it on close so no bot keeps running.
+       =================================================================== -->
+  <div class="lx-modal" id="demoModal" aria-hidden="true">
+    <div class="lx-modal__backdrop" data-modal-close></div>
+    <div class="lx-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle">
+      <div class="lx-modal__bar">
+        <span class="lx-modal__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="lx-modal__title" id="demoModalTitle">Demo</span>
+        <a class="lx-modal__ext" id="demoModalExt" href="#" target="_blank" rel="noopener" data-i18n="modal.open">Open in new tab ↗</a>
+        <button class="lx-modal__close" id="demoModalClose" type="button" aria-label="Close demo" data-i18n-aria="modal.close">×</button>
+      </div>
+      <div class="lx-modal__stage" id="demoModalStage">
+        <div class="lx-modal__load" id="demoModalLoad"><span class="lx-spin2" aria-hidden="true"></span></div>
+      </div>
+    </div>
+  </div>
 
   <footer class="lx-foot">
     <div class="wrap lx-foot__in">

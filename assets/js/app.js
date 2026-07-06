@@ -1,20 +1,30 @@
 /* LógosAI — app.js
- * UI plumbing: sticky nav, mobile drawer, scroll-reveal, the bot iframe
- * loader handoff, and the lead form (Formspree). The EL/EN swap lives in
- * i18n.js; the few strings this file builds at runtime (the form's states)
- * come back through window.LX_I18N so they follow the chosen language too.
+ * UI plumbing: sticky nav, mobile drawer, staggered scroll-reveal, the demo
+ * viewer modal (scenario gallery + tier "see it live"), and the lead form.
+ * The EL/EN swap lives in i18n.js; the few strings this file builds at runtime
+ * (the form's states) come back through window.LX_I18N so they follow language.
  *
- * Heads-up for whoever picks this up next: the lead form posts to Formspree
- * for now (FORM_ENDPOINT below). When the LógosAI inbox / CRM webhook is
- * ready, swap FORM_ENDPOINT and add the `tier` field to the CRM mapping. — LM
+ * Demo deployments live in ONE place — DEMOS below. ChatBOTTiers stays its own
+ * deploy; we just frame its demo pages in a modal (lazy iframe, sandboxed).
+ * When the LógosAI inbox / CRM webhook is ready, swap FORM_ENDPOINT. — LM
  */
 (function () {
   'use strict';
 
-  // current-language string for the bits we render here; falls back to the
-  // key (then English inside LX_I18N) if i18n.js somehow didn't load.
-  var t = function (key) {
-    return window.LX_I18N ? window.LX_I18N.t(key) : key;
+  var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
+  var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
+
+  var t = function (key) { return window.LX_I18N ? window.LX_I18N.t(key) : key; };
+
+  /* ---- demo deployments (single source of truth) ---- */
+  var CHATBOTTIERS_URL = 'https://chat-bot-tiers-eight.vercel.app';
+  var CHARALAMPIDIS_URL = 'https://chat-bot-henna-mu.vercel.app/';
+  var DEMOS = {
+    restaurant: { url: CHATBOTTIERS_URL + '/restaurant', title: 'Taverna «Το Κύμα» — Tier 1 demo' },
+    clinic:     { url: CHATBOTTIERS_URL + '/clinic',     title: 'Clinic «Γαλήνη» — Tier 2 demo' },
+    // ?chat=open → the widget on that page opens itself, so the visitor lands in
+    // the conversation instead of hunting for the bubble in a corner of the storefront
+    eshop:      { url: CHARALAMPIDIS_URL + '?chat=open', title: 'Χαραλαμπίδη — live client bot' }
   };
 
   // TODO(LM): replace with the LógosAI Formspree form id once the new inbox
@@ -22,14 +32,9 @@
   // submissions don't silently vanish.
   var FORM_ENDPOINT = 'https://formspree.io/f/xgopbgop';
 
-  var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
-  var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
-
-  /* ---- sticky nav: toggle the blur background past the fold ---- */
+  /* ---- sticky nav: blur background past the fold ---- */
   var nav = $('#nav');
-  var onScroll = function () {
-    if (nav) nav.classList.toggle('is-stuck', window.scrollY > 40);
-  };
+  var onScroll = function () { if (nav) nav.classList.toggle('is-stuck', window.scrollY > 40); };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -49,10 +54,19 @@
     });
   }
 
-  /* ---- scroll reveal. IntersectionObserver, unobserve once shown so we
-     don't keep firing on long pages. Falls back to "just show it" if the
-     browser is ancient (none of our clients are, but belt & suspenders). ---- */
+  /* ---- staggered scroll reveal ----
+     Give siblings within the same container an increasing --rise-delay so grids
+     cascade in. IntersectionObserver, unobserve once shown. Falls back to
+     "just show it" on ancient browsers. Motion is disabled via CSS under
+     prefers-reduced-motion. */
   var risers = $$('.rise');
+  risers.forEach(function (el) {
+    var parent = el.parentElement;
+    if (!parent) return;
+    var group = $$('.rise', parent).filter(function (s) { return s.parentElement === parent; });
+    var idx = group.indexOf(el);
+    if (idx > 0) el.style.setProperty('--rise-delay', Math.min(idx, 5) * 70 + 'ms');
+  });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -64,16 +78,78 @@
     risers.forEach(function (el) { el.classList.add('shown'); });
   }
 
-  /* ---- bot iframe loader handoff ----
-     The demo widget (chat-bot-henna-mu) cold-starts on Vercel, so first paint
-     can lag a second or two. We show a spinner underneath and fade it on load.
-     Safety timeout in case 'load' never fires (blocked/offline). */
-  var botFrame = $('#botFrame');
-  var botLoad = $('#botLoad');
-  if (botFrame && botLoad) {
-    var hideLoader = function () { botLoad.classList.add('gone'); };
-    botFrame.addEventListener('load', hideLoader);
-    setTimeout(hideLoader, 6000);
+  /* ---- demo viewer modal ----
+     Opened by any [data-demo-open="key"] (gallery cards + tier "see it live").
+     The iframe is built on open and removed on close, so no bot keeps running
+     in the background. Accessible: focus trap, ESC, backdrop click, focus return. */
+  var modal = $('#demoModal');
+  if (modal) {
+    var mStage = $('#demoModalStage', modal);
+    var mLoad = $('#demoModalLoad', modal);
+    var mTitle = $('#demoModalTitle', modal);
+    var mExt = $('#demoModalExt', modal);
+    var mClose = $('#demoModalClose', modal);
+    var lastFocused = null;
+    var currentFrame = null;
+
+    var focusables = function () {
+      return $$('a[href], button:not([disabled])', modal).filter(function (el) { return el.offsetParent !== null; });
+    };
+
+    var onKey = function (e) {
+      if (e.key === 'Escape') { closeDemo(); return; }
+      if (e.key !== 'Tab') return;
+      var f = focusables();
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+
+    var openDemo = function (key) {
+      var d = DEMOS[key];
+      if (!d) return;
+      lastFocused = document.activeElement;
+      mTitle.textContent = d.title;
+      mExt.href = d.url;
+      if (mLoad) mLoad.classList.remove('gone');
+
+      currentFrame = document.createElement('iframe');
+      currentFrame.title = d.title;
+      currentFrame.referrerPolicy = 'no-referrer';
+      // sandbox: our own trusted demo pages need scripts + same-origin (their
+      // API calls) + forms (the booking wizard) + popups (map/phone links).
+      currentFrame.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox');
+      currentFrame.addEventListener('load', function () { if (mLoad) mLoad.classList.add('gone'); });
+      currentFrame.src = d.url;
+      mStage.appendChild(currentFrame);
+
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lx-noscroll');
+      document.addEventListener('keydown', onKey);
+      setTimeout(function () { mClose.focus(); }, 40);
+    };
+
+    var closeDemo = function () {
+      if (!modal.classList.contains('is-open')) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lx-noscroll');
+      document.removeEventListener('keydown', onKey);
+      if (currentFrame) { currentFrame.remove(); currentFrame = null; }
+      if (mLoad) mLoad.classList.remove('gone');
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    };
+
+    mClose.addEventListener('click', closeDemo);
+    $$('[data-modal-close]', modal).forEach(function (el) { el.addEventListener('click', closeDemo); });
+    $$('[data-demo-open]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openDemo(btn.getAttribute('data-demo-open'));
+      });
+    });
   }
 
   /* ---- lead form ----
@@ -115,7 +191,6 @@
         company: ($('#f-company', form) || {}).value || '',
         tier: ($('#f-tier', form) || {}).value || '',
         message: message.value.trim(),
-        // bit of routing context so we can triage in the inbox
         _source: 'logosai.site/contact'
       };
 
@@ -132,7 +207,6 @@
           '<p class="muted">' + t('form.ok.body').replace('{name}', firstName) + '</p>' +
           '</div>';
       }).catch(function (err) {
-        // don't swallow it — log for us, tell them what to do instead
         console.error('[leadForm] submit failed:', err);
         btn.disabled = false;
         btn.textContent = label;
