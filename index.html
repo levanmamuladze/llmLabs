@@ -2,29 +2,55 @@
 <!--
   LógosAI — single-page site. Static, no build step (deploy = drop the folder).
   Structure:  assets/css/main.css  ·  assets/js/i18n.js  ·  assets/js/app.js
-  English is the source of truth in this file; Greek overrides live in i18n.js,
-  keyed by the data-i18n / data-i18n-ph / data-i18n-aria attributes below.
-  Before going live, fill the two CONTACT placeholders (search TODO:contact)
-  and point app.js FORM_ENDPOINT at the LógosAI Formspree id. — LM, Jun 2026
+  GREEK is the source of truth in this file (crawlable — this is a Greek-market
+  page); English overrides live in i18n.js, keyed by the data-i18n /
+  data-i18n-ph / data-i18n-aria attributes below. Inverted Jul 2026 so Google
+  indexes the language our buyers actually search in. — LM
 -->
-<html lang="en">
+<html lang="el">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LógosAI — Chatbots, AI Agents & Websites for Greek businesses</title>
-  <meta name="description" content="LógosAI designs conversational chatbots, action-taking AI agents, and the websites they live on. Greek-first, bilingual EL/EN. Live demos on the page.">
-  <meta name="theme-color" content="#07080d">
-  <meta property="og:title" content="LógosAI — Bots that answer, agents that act">
-  <meta property="og:description" content="From a one-script FAQ widget to a step-by-step booking assistant — and custom agents beyond. Try the live demos on the page.">
+  <title>LógosAI — Chatbots, AI Agents & ιστοσελίδες για ελληνικές επιχειρήσεις</title>
+  <meta name="description" content="Η LógosAI σχεδιάζει συνομιλιακά chatbots, AI agents που εκτελούν ενέργειες, και τις ιστοσελίδες όπου ζουν. Greek-first, δίγλωσσα EL/EN. Ζωντανά demos στη σελίδα.">
+  <meta name="theme-color" content="#06070c">
+  <link rel="canonical" href="https://logoai-nu.vercel.app/">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <meta property="og:title" content="LógosAI — Bots που απαντούν, agents που δρουν">
+  <meta property="og:description" content="Από ένα FAQ widget ενός script tag ως βοηθό κρατήσεων βήμα-βήμα — και custom agents πιο πέρα. Δοκίμασε τα ζωντανά demos στη σελίδα.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logoai-nu.vercel.app/">
+  <meta property="og:image" content="https://logoai-nu.vercel.app/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Analytics (umami, cookie-free): create the site at cloud.umami.is, then paste the
+       website-id below and remove the comment markers. Nothing loads until then. — LM
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="PASTE-WEBSITE-ID"></script>
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Θα βγάζει πράγματα απ’ το μυαλό του;", "acceptedAnswer": {"@type": "Answer", "text": "Απαντά από το περιεχόμενο που του δίνεις και έχει οδηγία να λέει «Δεν ξέρω — δες εδώ πώς να βρεις άνθρωπο» όταν κάτι είναι εκτός θέματος. Δοκιμάζουμε τα όρια πριν το launch."}},
+      {"@type": "Question", "name": "Χρειάζεστε τους κωδικούς μας;", "acceptedAnswer": {"@type": "Answer", "text": "Για τα Επίπεδα 1 και 2 ουσιαστικά όχι. Μόνο το πλήρες Επίπεδο Agent αγγίζει πραγματικά συστήματα, με περιορισμένα κλειδιά ελάχιστων προνομίων και κάθε ενέργεια καταγεγραμμένη."}},
+      {"@type": "Question", "name": "Υπάρχουν κρυφές χρεώσεις χρήσης πάνω από τη μηνιαία τιμή;", "acceptedAnswer": {"@type": "Answer", "text": "Όχι. Η συνδρομή είναι σταθερή και περιλαμβάνει hosting και το AI μοντέλο — δεν υπάρχει ξεχωριστός λογαριασμός API που ανεβαίνει με την κίνηση."}},
+      {"@type": "Question", "name": "Μιλάει σωστά ελληνικά;", "acceptedAnswer": {"@type": "Answer", "text": "Ναι — κάθε επίπεδο είναι δίγλωσσο EL/EN εξ ορισμού και το περιεχόμενο γράφεται στα ελληνικά. Το μοντέλο επιλέγεται ανά πελάτη."}},
+      {"@type": "Question", "name": "Έχουμε ήδη ιστοσελίδα. Χρειαζόμαστε καινούρια;", "acceptedAnswer": {"@type": "Answer", "text": "Όχι. Το chatbot μπαίνει στην υπάρχουσα σελίδα σου μ’ ένα script tag."}},
+      {"@type": "Question", "name": "Κι αν ξεπεράσουμε το επίπεδο από το οποίο ξεκινάμε;", "acceptedAnswer": {"@type": "Answer", "text": "Αναβάθμιση όποτε θες, χωρίς ξαναχτίσιμο — και πιστώνουμε το setup που ήδη πλήρωσες στο νέο επίπεδο."}},
+      {"@type": "Question", "name": "Μας ανήκει;", "acceptedAnswer": {"@type": "Answer", "text": "Ναι. Το build είναι δικό σου· η συνδρομή managed-service είναι προαιρετική. Χωρίς δεσμεύσεις."}}
+    ]
+  }
+  </script>
 </head>
 <body id="top">
 
-  <a class="lx-skip" href="#build" data-i18n="a11y.skip">Skip to content</a>
+  <a class="lx-skip" href="#main" data-i18n="a11y.skip">Μετάβαση στο περιεχόμενο</a>
 
   <nav class="lx-nav" id="nav">
     <div class="lx-nav__in">
@@ -33,65 +59,60 @@
         <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
           <rect x="1.5" y="1.5" width="29" height="24" rx="8" stroke="#2de2c0" stroke-width="2"/>
           <path d="M9 24l-3 5 7-3" stroke="#2de2c0" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M11 19l5-12 5 12" stroke="#6d7cff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M13.2 13.6h5.6" stroke="#6d7cff" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M11 19l5-12 5 12" stroke="#7c8bff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13.2 13.6h5.6" stroke="#7c8bff" stroke-width="2.2" stroke-linecap="round"/>
         </svg>
         <span><b>Lógos</b><span class="ai">AI</span></span>
       </a>
 
       <div class="lx-nav__links">
-        <a href="#build" data-i18n="nav.build">What we build</a>
-        <a href="#demo" data-i18n="nav.demo">Live demo</a>
-        <a href="#pricing" data-i18n="nav.pricing">Tiers &amp; pricing</a>
-        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="#build" data-i18n="nav.build">Τι φτιάχνουμε</a>
+        <a href="#demo" data-i18n="nav.demo">Ζωντανό demo</a>
+        <a href="#pricing" data-i18n="nav.pricing">Πακέτα & τιμές</a>
+        <a href="#faq" data-i18n="nav.faq">Συχνές ερωτήσεις</a>
         <div class="lx-lang" role="group" aria-label="Language">
-          <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
-          <button type="button" data-lang-set="el" aria-pressed="false">ΕΛ</button>
+          <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
+          <button type="button" data-lang-set="el" aria-pressed="true">ΕΛ</button>
         </div>
-        <!-- TODO:contact — real number -->
-        <a href="tel:+30000000000" class="lx-nav__phone nowrap">+30 — set phone</a>
-        <a href="#contact" class="lx-btn lx-cta" data-i18n="nav.cta">Book a call</a>
+        <a href="tel:+306983678188" class="lx-nav__phone nowrap">698 367 8188</a>
+        <a href="#contact" class="lx-btn lx-cta" data-i18n="nav.cta">Κλείσε ραντεβού</a>
       </div>
 
-      <button class="lx-burger" id="burger" aria-label="Open menu" data-i18n-aria="nav.menu" aria-expanded="false" aria-controls="drawer">
+      <button class="lx-burger" id="burger" aria-label="Άνοιγμα μενού" data-i18n-aria="nav.menu" aria-expanded="false" aria-controls="drawer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
     <div class="lx-drawer" id="drawer">
-      <a href="#build" data-i18n="nav.build">What we build</a>
-      <a href="#demo" data-i18n="nav.demo">Live demo</a>
-      <a href="#pricing" data-i18n="nav.pricing">Tiers &amp; pricing</a>
-      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#build" data-i18n="nav.build">Τι φτιάχνουμε</a>
+      <a href="#demo" data-i18n="nav.demo">Ζωντανό demo</a>
+      <a href="#pricing" data-i18n="nav.pricing">Πακέτα & τιμές</a>
+      <a href="#faq" data-i18n="nav.faq">Συχνές ερωτήσεις</a>
       <div class="lx-lang" role="group" aria-label="Language">
-        <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
-        <button type="button" data-lang-set="el" aria-pressed="false">ΕΛ</button>
+        <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang-set="el" aria-pressed="true">ΕΛ</button>
       </div>
-      <a href="#contact" class="lx-btn lx-cta" data-i18n="nav.cta">Book a call</a>
+      <a href="#contact" class="lx-btn lx-cta" data-i18n="nav.cta">Κλείσε ραντεβού</a>
     </div>
   </nav>
 
-  <main>
+  <main id="main">
     <!-- ===================================================================
          HERO. Centered single-column; the live bot lives down in #demo so
          we only cold-start one iframe on the page.
          =================================================================== -->
     <header class="lx-stage wrap">
       <div class="lx-stage__in rise">
-        <span class="pill"><span class="dot"></span> <span data-i18n="hero.pill">Taking on 2–3 new bot builds this quarter</span></span>
-        <h1 data-i18n="hero.h1">Bots that <span class="glow">answer</span>. Agents that <span class="glow">act</span>. Sites that <span class="glow">convert</span>.</h1>
-        <p class="sub" data-i18n="hero.sub">
-          We take the repetitive questions, the no-shows and the order-status calls off your plate —
-          with a Greek-first assistant that answers 24/7 and books, checks orders and updates your CRM
-          on its own. Grounded in your content, live in days.
-        </p>
+        <span class="pill"><span class="dot"></span> <span data-i18n="hero.pill">Αναλαμβάνουμε 2–3 νέα bots αυτό το τρίμηνο</span></span>
+        <h1 data-i18n="hero.h1">Bots που <span class="glow">απαντούν</span>. Agents που <span class="glow">δρουν</span>. Σελίδες που <span class="glow">πουλούν</span>.</h1>
+        <p class="sub" data-i18n="hero.sub">Σου βγάζουμε από πάνω τις επαναλαμβανόμενες ερωτήσεις, τα ακυρωμένα ραντεβού και τα τηλέφωνα «πού είναι η παραγγελία μου;» — μ’ έναν Greek-first βοηθό που απαντά 24/7 και κλείνει ραντεβού, ελέγχει παραγγελίες και ενημερώνει μόνος του το CRM σου. Στηριγμένο στο δικό σου περιεχόμενο, έτοιμο σε μέρες.</p>
         <div class="lx-stage__actions">
-          <a href="#demo" class="lx-btn lx-cta" data-i18n="hero.cta1">Talk to the live bot →</a>
-          <a href="#pricing" class="lx-btn lx-ghost" data-i18n="hero.cta2">See tiers &amp; pricing</a>
+          <a href="#demo" class="lx-btn lx-cta" data-i18n="hero.cta1">Μίλα στο ζωντανό bot →</a>
+          <a href="#pricing" class="lx-btn lx-ghost" data-i18n="hero.cta2">Δες πακέτα & τιμές</a>
         </div>
         <div class="lx-stage__meta">
-          <span data-i18n="hero.meta1"><b>1–3 days</b> for a FAQ widget</span>
-          <span data-i18n="hero.meta2"><b>Flat pricing</b> · no usage fees</span>
-          <span data-i18n="hero.meta3"><b>Direct</b> — you talk to the dev</span>
+          <span data-i18n="hero.meta1"><b>1–3 μέρες</b> για ένα FAQ widget</span>
+          <span data-i18n="hero.meta2"><b>Σταθερή τιμή</b> · χωρίς χρεώσεις χρήσης</span>
+          <span data-i18n="hero.meta3"><b>Απευθείας</b> — μιλάς με τον developer</span>
         </div>
       </div>
     </header>
@@ -102,10 +123,9 @@
          =================================================================== -->
     <section class="lx-band wrap" id="build">
       <div class="lx-head rise">
-        <span class="kicker" data-i18n="build.kicker">What we build</span>
-        <h2 data-i18n="build.h2">Three things, one conversation</h2>
-        <p class="lede" data-i18n="build.lede">Most clients start with one and grow into the others. The bot and the site
-          share the same brand voice because the same person writes both.</p>
+        <span class="kicker" data-i18n="build.kicker">Τι φτιάχνουμε</span>
+        <h2 data-i18n="build.h2">Τρία πράγματα, μία συνομιλία</h2>
+        <p class="lede" data-i18n="build.lede">Οι περισσότεροι πελάτες ξεκινούν από ένα και μεγαλώνουν στα υπόλοιπα. Το bot και η σελίδα μοιράζονται την ίδια φωνή, γιατί τα γράφει το ίδιο άτομο.</p>
       </div>
 
       <div class="lx-pillars">
@@ -113,12 +133,12 @@
           <div class="lx-ic">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.7-.8L3 21l1.8-5.4A8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>
           </div>
-          <h3 data-i18n="build.c1.h3">Conversational chatbots</h3>
-          <p data-i18n="build.c1.p">The widget that answers ωράρια, τιμές, “πού είστε;” — grounded in your own content, so answers come from you, not thin air.</p>
+          <h3 data-i18n="build.c1.h3">Συνομιλιακά chatbots</h3>
+          <p data-i18n="build.c1.p">Το widget που απαντά σε ωράρια, τιμές, «πού είστε;» — στηριγμένο στο δικό σου περιεχόμενο, ώστε οι απαντήσεις να βγαίνουν από σένα, όχι από το πουθενά.</p>
           <ul>
-            <li data-i18n="build.c1.li1">One &lt;script&gt; tag, drops into any site</li>
-            <li data-i18n="build.c1.li2">Greek + English in the same thread</li>
-            <li data-i18n="build.c1.li3">Answers from your content, not made up</li>
+            <li data-i18n="build.c1.li1">Ένα &lt;script&gt; tag, μπαίνει σε οποιαδήποτε σελίδα</li>
+            <li data-i18n="build.c1.li2">Ελληνικά + Αγγλικά στην ίδια συνομιλία</li>
+            <li data-i18n="build.c1.li3">Απαντά από το περιεχόμενό σου, χωρίς εφευρέσεις</li>
           </ul>
         </article>
 
@@ -126,12 +146,12 @@
           <div class="lx-ic">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/><circle cx="12" cy="12" r="4"/></svg>
           </div>
-          <h3 data-i18n="build.c2.h3">AI agents that do things</h3>
-          <p data-i18n="build.c2.p">Not just talk — act. Books the appointment, checks order status, files the return, pushes the lead into your CRM. Scoped access, every action traceable — designed per project.</p>
+          <h3 data-i18n="build.c2.h3">AI agents που κάνουν πράγματα</h3>
+          <p data-i18n="build.c2.p">Όχι απλώς μιλούν — δρουν. Κλείνουν το ραντεβού, ελέγχουν την παραγγελία, καταχωρούν την επιστροφή, σπρώχνουν το lead στο CRM σου. Περιορισμένη πρόσβαση, κάθε ενέργεια ανιχνεύσιμη — σχεδιασμένο ανά έργο.</p>
           <ul>
-            <li data-i18n="build.c2.li1">Calendar, e-shop, CRM, payment, SMS</li>
-            <li data-i18n="build.c2.li2">Scoped, read-only credentials by default</li>
-            <li data-i18n="build.c2.li3">Every action logged — you can see what it did</li>
+            <li data-i18n="build.c2.li1">Ημερολόγιο, e-shop, CRM, πληρωμές, SMS</li>
+            <li data-i18n="build.c2.li2">Περιορισμένα δικαιώματα, read-only εξ ορισμού</li>
+            <li data-i18n="build.c2.li3">Κάθε ενέργεια καταγράφεται — βλέπεις τι έκανε</li>
           </ul>
         </article>
 
@@ -139,12 +159,12 @@
           <div class="lx-ic">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg>
           </div>
-          <h3 data-i18n="build.c3.h3">The site it lives on</h3>
-          <p data-i18n="build.c3.p">If the bot needs a home, we build it. Fast, mobile-first landing pages and business sites — the same conversion focus, now with an assistant baked in instead of a contact form nobody fills out.</p>
+          <h3 data-i18n="build.c3.h3">Η σελίδα όπου ζει</h3>
+          <p data-i18n="build.c3.p">Αν το bot χρειάζεται σπίτι, το χτίζουμε. Γρήγορες, mobile-first landing pages και εταιρικές σελίδες — με την ίδια εστίαση στη μετατροπή, μόνο που τώρα έχουν βοηθό ενσωματωμένο αντί για μια φόρμα που δεν συμπληρώνει κανείς.</p>
           <ul>
-            <li data-i18n="build.c3.li1">Mobile-first, loads fast on 4G</li>
-            <li data-i18n="build.c3.li2">Bot embedded, not bolted on</li>
-            <li data-i18n="build.c3.li3">You own the code — no lock-in</li>
+            <li data-i18n="build.c3.li1">Mobile-first, φορτώνει γρήγορα στο 4G</li>
+            <li data-i18n="build.c3.li2">Bot ενσωματωμένο, όχι βιδωμένο από πάνω</li>
+            <li data-i18n="build.c3.li3">Ο κώδικας είναι δικός σου — χωρίς δεσμεύσεις</li>
           </ul>
         </article>
       </div>
@@ -157,59 +177,58 @@
          =================================================================== -->
     <section class="lx-band wrap" id="demo">
       <div class="lx-head rise">
-        <span class="kicker" data-i18n="demo.kicker">Live, not a mockup</span>
-        <h2 data-i18n="demo.h2">Pick a business. Talk to its bot.</h2>
-        <p class="lede" data-i18n="demo.lede">These are real, working bots — the exact experience we’d ship you, on sample data.
-          Choose the scenario closest to your business and try it live, right here on the page.</p>
+        <span class="kicker" data-i18n="demo.kicker">Ζωντανό, όχι mockup</span>
+        <h2 data-i18n="demo.h2">Διάλεξε μια επιχείρηση. Μίλα στο bot της.</h2>
+        <p class="lede" data-i18n="demo.lede">Είναι πραγματικά, λειτουργικά bots — ακριβώς η εμπειρία που θα σου παραδίδαμε, με δείγμα δεδομένων. Διάλεξε το σενάριο που μοιάζει στη δική σου επιχείρηση και δοκίμασέ το ζωντανά, εδώ στη σελίδα.</p>
       </div>
 
       <div class="lx-gallery">
         <article class="lx-scenario rise" data-demo="restaurant">
           <div class="lx-scenario__top">
             <span class="lx-scenario__ic" aria-hidden="true">🍽️</span>
-            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.live">Live</span></span>
+            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.live">Ζωντανό</span></span>
           </div>
-          <span class="lx-scenario__tier" data-i18n="scn.r.tier">Tier 1 · FAQ</span>
-          <h3 data-i18n="scn.r.h3">Taverna “Το Κύμα”</h3>
-          <p data-i18n="scn.r.p">A seaside taverna’s assistant — hours, the day’s fish, reservations, allergens, parking. Answers freely in Greek or English.</p>
+          <span class="lx-scenario__tier" data-i18n="scn.r.tier">Επίπεδο 1 · FAQ</span>
+          <h3 data-i18n="scn.r.h3">Ταβέρνα «Το Κύμα»</h3>
+          <p data-i18n="scn.r.p">Ο βοηθός μιας ψαροταβέρνας — ωράριο, το ψάρι της ημέρας, κρατήσεις, αλλεργίες, πάρκινγκ. Απαντά ελεύθερα, ελληνικά ή αγγλικά.</p>
           <ul class="lx-scenario__does">
-            <li data-i18n="scn.r.li1">Answers from one content file</li>
-            <li data-i18n="scn.r.li2">Greek + English in one chat</li>
-            <li data-i18n="scn.r.li3">Hands off to the phone when unsure</li>
+            <li data-i18n="scn.r.li1">Απαντά από ένα αρχείο περιεχομένου</li>
+            <li data-i18n="scn.r.li2">Ελληνικά + Αγγλικά στην ίδια κουβέντα</li>
+            <li data-i18n="scn.r.li3">Παραπέμπει στο τηλέφωνο όταν δεν ξέρει</li>
           </ul>
-          <button type="button" class="lx-btn lx-cta lx-scenario__cta" data-demo-open="restaurant" data-i18n="scn.try">Try this demo →</button>
+          <button type="button" class="lx-btn lx-cta lx-scenario__cta" data-demo-open="restaurant" data-i18n="scn.try">Δοκίμασε το demo →</button>
         </article>
 
         <article class="lx-scenario rise" data-demo="clinic">
           <div class="lx-scenario__top">
             <span class="lx-scenario__ic" aria-hidden="true">🏥</span>
-            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.live">Live</span></span>
+            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.live">Ζωντανό</span></span>
           </div>
-          <span class="lx-scenario__tier" data-i18n="scn.c.tier">Tier 2 · Bookings</span>
-          <h3 data-i18n="scn.c.h3">Clinic “Γαλήνη”</h3>
-          <p data-i18n="scn.c.p">A dental clinic’s receptionist — walks you to a real appointment (service → day → time → details) and answers questions on the way.</p>
+          <span class="lx-scenario__tier" data-i18n="scn.c.tier">Επίπεδο 2 · Κρατήσεις</span>
+          <h3 data-i18n="scn.c.h3">Οδοντιατρείο «Γαλήνη»</h3>
+          <p data-i18n="scn.c.p">Η ρεσεψιόν ενός οδοντιατρείου — σε πάει βήμα-βήμα σε πραγματικό ραντεβού (υπηρεσία → μέρα → ώρα → στοιχεία) κι απαντά σε ερωτήσεις στην πορεία.</p>
           <ul class="lx-scenario__does">
-            <li data-i18n="scn.c.li1">Live slots from the schedule</li>
-            <li data-i18n="scn.c.li2">Booking code on confirm</li>
-            <li data-i18n="scn.c.li3">Chats while it books</li>
+            <li data-i18n="scn.c.li1">Ζωντανές ώρες από το πρόγραμμα</li>
+            <li data-i18n="scn.c.li2">Κωδικός κράτησης στην επιβεβαίωση</li>
+            <li data-i18n="scn.c.li3">Συζητά ενώ κλείνει το ραντεβού</li>
           </ul>
-          <button type="button" class="lx-btn lx-cta lx-scenario__cta" data-demo-open="clinic" data-i18n="scn.try">Try this demo →</button>
+          <button type="button" class="lx-btn lx-cta lx-scenario__cta" data-demo-open="clinic" data-i18n="scn.try">Δοκίμασε το demo →</button>
         </article>
 
         <article class="lx-scenario rise" data-demo="eshop">
           <div class="lx-scenario__top">
             <span class="lx-scenario__ic" aria-hidden="true">🛒</span>
-            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.real">Real client</span></span>
+            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.real">Πραγματικός πελάτης</span></span>
           </div>
-          <span class="lx-scenario__tier" data-i18n="scn.e.tier">Tier 1 · In production</span>
-          <h3 data-i18n="scn.e.h3">Χαραλαμπίδη — linens e-shop</h3>
-          <p data-i18n="scn.e.p">A real bot we built and run for a Thessaloniki bed-linens shop — product advice, sizes, prices, care, returns. Live on their site today.</p>
+          <span class="lx-scenario__tier" data-i18n="scn.e.tier">Επίπεδο 1 · Σε παραγωγή</span>
+          <h3 data-i18n="scn.e.h3">Χαραλαμπίδη — e-shop λευκών ειδών</h3>
+          <p data-i18n="scn.e.p">Ένα πραγματικό bot που φτιάξαμε και τρέχουμε για κατάστημα λευκών ειδών στη Θεσσαλονίκη — προτάσεις προϊόντων, διαστάσεις, τιμές, φροντίδα, επιστροφές. Κατασκευή παραγωγής — δοκίμασέ τη τώρα.</p>
           <ul class="lx-scenario__does">
-            <li data-i18n="scn.e.li1">Recommends by size &amp; budget</li>
-            <li data-i18n="scn.e.li2">One script tag on their site</li>
-            <li data-i18n="scn.e.li3">Sales-tuned, not just FAQ</li>
+            <li data-i18n="scn.e.li1">Προτείνει με βάση διάσταση & προϋπολογισμό</li>
+            <li data-i18n="scn.e.li2">Μπαίνει μ’ ένα script tag</li>
+            <li data-i18n="scn.e.li3">Με ύφος πωλητή, όχι απλό FAQ</li>
           </ul>
-          <button type="button" class="lx-btn lx-cta lx-scenario__cta" data-demo-open="eshop" data-i18n="scn.try">Try this demo →</button>
+          <button type="button" class="lx-btn lx-cta lx-scenario__cta" data-demo-open="eshop" data-i18n="scn.try">Δοκίμασε το demo →</button>
         </article>
       </div>
     </section>
@@ -221,10 +240,10 @@
          =================================================================== -->
     <section class="lx-band lx-band--tight wrap" id="proof">
       <div class="lx-stats rise">
-        <div class="lx-stat"><b>24/7</b><span data-i18n="proof.s1">Always-on answering — even after you’ve closed</span></div>
-        <div class="lx-stat"><b data-i18n="proof.b2">1–3 days</b><span data-i18n="proof.s2">From scope call to a live FAQ widget</span></div>
-        <div class="lx-stat"><b data-i18n="proof.b3">3 bots</b><span data-i18n="proof.s3">Live on this page — try them right now</span></div>
-        <div class="lx-stat"><b>100%</b><span data-i18n="proof.s4">You own the build — no lock-in</span></div>
+        <div class="lx-stat"><b>24/7</b><span data-i18n="proof.s1">Πάντα ενεργό — ακόμα κι όταν έχεις κλείσει</span></div>
+        <div class="lx-stat"><b data-i18n="proof.b2">1–3 μέρες</b><span data-i18n="proof.s2">Από το πρώτο call σε ζωντανό FAQ widget</span></div>
+        <div class="lx-stat"><b data-i18n="proof.b3">3 bots</b><span data-i18n="proof.s3">Ζωντανά σε αυτή τη σελίδα — δοκίμασέ τα τώρα</span></div>
+        <div class="lx-stat"><b>100%</b><span data-i18n="proof.s4">Ο κώδικας δικός σου — χωρίς δεσμεύσεις</span></div>
       </div>
 
       <!-- TODO:proof — paste one real testimonial here when the client agrees, then delete this comment.
@@ -244,126 +263,117 @@
          =================================================================== -->
     <section class="lx-band wrap" id="pricing">
       <div class="lx-head rise">
-        <span class="kicker" data-i18n="pricing.kicker">Tiers &amp; pricing</span>
-        <h2 data-i18n="pricing.h2">Four tiers. Start low, climb when it pays for itself.</h2>
-        <p class="lede" data-i18n="pricing.lede">Priced on the work it takes off your plate, not on tokens. A flat monthly
-          subscription plus a one-off setup is all of it: hosting, the AI model and support are bundled,
-          so there’s no surprise usage bill. Every tier upgrades into the next without a rebuild, and we
-          credit your previous setup when you move up.</p>
+        <span class="kicker" data-i18n="pricing.kicker">Πακέτα & τιμές</span>
+        <h2 data-i18n="pricing.h2">Τέσσερα επίπεδα. Ξεκίνα χαμηλά, ανέβα όταν αποδίδει.</h2>
+        <p class="lede" data-i18n="pricing.lede">Η τιμή βασίζεται στη δουλειά που σου βγάζει από πάνω, όχι σε tokens. Μια σταθερή μηνιαία συνδρομή συν ένα εφάπαξ setup — αυτό είναι όλο: το hosting, το AI μοντέλο και η υποστήριξη περιλαμβάνονται, οπότε δεν υπάρχει έκπληξη στον λογαριασμό. Κάθε επίπεδο αναβαθμίζεται στο επόμενο χωρίς ξαναχτίσιμο, και πιστώνουμε το προηγούμενο setup όταν ανεβαίνεις.</p>
       </div>
 
       <div class="lx-tierwall">
         <!-- T1 -->
         <article class="lx-tier tier-faq rise">
           <div class="lx-tier__head">
-            <span class="lx-tier__no" data-i18n="t1.no">TIER 1 · Questions</span>
-            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.livedemo">Live demo</span></span>
+            <span class="lx-tier__no" data-i18n="t1.no">ΕΠΙΠΕΔΟ 1 · Ερωτήσεις</span>
+            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.livedemo">Ζωντανό demo</span></span>
           </div>
           <h3>Bot Ερωτήσεων</h3>
-          <p class="what" data-i18n="t1.what">A floating chat bubble that understands free-form questions and answers from
-            your content — hours, services, prices, location, policies. Grounded in your material, so
-            when it doesn't know it says so and points to a human.</p>
+          <p class="what" data-i18n="t1.what">Μια αιωρούμενη φούσκα συνομιλίας που καταλαβαίνει ελεύθερες ερωτήσεις και απαντά από το περιεχόμενό σου — ωράρια, υπηρεσίες, τιμές, τοποθεσία, πολιτικές. Στηρίζεται στο υλικό σου, οπότε όταν δεν ξέρει το λέει και σε παραπέμπει σε άνθρωπο.</p>
           <div class="lx-plans">
             <div class="lx-plan">
-              <div class="lx-plan__name"><b>Essential</b><span data-i18n="t1.p1.desc">Smart Greek answers. Small shop.</span></div>
-              <div class="lx-plan__cost"><span class="mo">€29<small data-i18n="unit.mo">/mo</small></span><span class="set" data-i18n="t1.p1.set">setup €200</span></div>
+              <div class="lx-plan__name"><b>Essential</b><span data-i18n="t1.p1.desc">Βασικό περιεχόμενο — FAQ και τα απαραίτητα. Καθαρό, τυπικό ύφος.</span></div>
+              <div class="lx-plan__cost"><span class="mo">€29<small data-i18n="unit.mo">/μήνα</small></span><span class="set" data-i18n="t1.p1.set">setup €200</span></div>
             </div>
             <div class="lx-plan">
-              <div class="lx-plan__name"><b>Pro</b><span data-i18n="t1.p2.desc">Bilingual EL/EN, richer tone for tourism.</span></div>
-              <div class="lx-plan__cost"><span class="mo">€49<small data-i18n="unit.mo">/mo</small></span><span class="set" data-i18n="t1.p2.set">setup €250</span></div>
+              <div class="lx-plan__name"><b>Pro <em class="lx-plan__tag" data-i18n="t1.p2.tag">★ Η πιο συχνή επιλογή</em></b><span data-i18n="t1.p2.desc">Πλήρες περιεχόμενο, ύφος στη φωνή της μάρκας σου — ιδανικό για τουρισμό.</span></div>
+              <div class="lx-plan__cost"><span class="mo">€49<small data-i18n="unit.mo">/μήνα</small></span><span class="set" data-i18n="t1.p2.set">setup €250</span></div>
             </div>
           </div>
-          <p class="fit" data-i18n="t1.fit"><b>Ideal for:</b> restaurants, shops, services with frequent questions.</p>
-          <button type="button" class="lx-tier__demo" data-demo-open="restaurant" data-i18n="t1.live">▸ See it live</button>
-          <a href="#contact" class="lx-tier__cta" data-i18n="t1.cta">Get my FAQ bot →</a>
+          <p class="fit" data-i18n="t1.fit"><b>Ιδανικό για:</b> εστιατόρια, καταστήματα, υπηρεσίες με συχνές ερωτήσεις.</p>
+          <button type="button" class="lx-tier__demo" data-demo-open="restaurant" data-i18n="t1.live">▸ Δες το ζωντανά</button>
+          <a href="#contact" class="lx-tier__cta" data-i18n="t1.cta">Θέλω το FAQ bot μου →</a>
         </article>
 
         <!-- T2 -->
         <article class="lx-tier tier-wizard rise">
           <div class="lx-tier__head">
-            <span class="lx-tier__no" data-i18n="t2.no">TIER 2 · Bookings</span>
-            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.livedemo">Live demo</span></span>
+            <span class="lx-tier__no" data-i18n="t2.no">ΕΠΙΠΕΔΟ 2 · Κρατήσεις</span>
+            <span class="lx-badge lx-badge--live"><span class="dot"></span> <span data-i18n="badge.livedemo">Ζωντανό demo</span></span>
           </div>
           <h3>Bot Κρατήσεων</h3>
-          <p class="what" data-i18n="t2.what">Walks the visitor to a booking step-by-step (service → day → time → details) while
-            answering questions along the way. Free slots come from your own schedule, so they’re never stale;
-            issues a booking code.</p>
+          <p class="what" data-i18n="t2.what">Οδηγεί τον επισκέπτη στην κράτηση βήμα-βήμα (υπηρεσία → μέρα → ώρα → στοιχεία) ενώ απαντά σε ερωτήσεις στην πορεία. Οι ελεύθερες ώρες έρχονται από το δικό σου πρόγραμμα, οπότε δεν είναι ποτέ ξεπερασμένες· εκδίδει κωδικό κράτησης.</p>
           <div class="lx-plans">
             <div class="lx-plan">
-              <div class="lx-plan__name"><b>Standard</b><span data-i18n="t2.p1.desc">Full booking flow + smart Q&amp;A.</span></div>
-              <div class="lx-plan__cost"><span class="mo">€79<small data-i18n="unit.mo">/mo</small></span><span class="set" data-i18n="t2.p1.set">setup €400</span></div>
+              <div class="lx-plan__name"><b>Standard</b><span data-i18n="t2.p1.desc">Πλήρης ροή κράτησης + έξυπνο Q&amp;A.</span></div>
+              <div class="lx-plan__cost"><span class="mo">€79<small data-i18n="unit.mo">/μήνα</small></span><span class="set" data-i18n="t2.p1.set">setup €400</span></div>
             </div>
             <div class="lx-plan">
-              <div class="lx-plan__name"><b>Plus</b><span data-i18n="t2.p2.desc">Advanced bilingual + extra booking scenarios.</span></div>
-              <div class="lx-plan__cost"><span class="mo">€99<small data-i18n="unit.mo">/mo</small></span><span class="set" data-i18n="t2.p2.set">setup €450</span></div>
+              <div class="lx-plan__name"><b>Plus</b><span data-i18n="t2.p2.desc">Επιπλέον σενάρια κράτησης & πιο πλούσιες ροές.</span></div>
+              <div class="lx-plan__cost"><span class="mo">€99<small data-i18n="unit.mo">/μήνα</small></span><span class="set" data-i18n="t2.p2.set">setup €450</span></div>
             </div>
           </div>
-          <p class="fit" data-i18n="t2.fit"><b>Ideal for:</b> clinics, salons, gyms — anything appointment-based.</p>
-          <button type="button" class="lx-tier__demo" data-demo-open="clinic" data-i18n="t2.live">▸ See it live</button>
-          <a href="#contact" class="lx-tier__cta" data-i18n="t2.cta">Set up bookings →</a>
+          <p class="fit" data-i18n="t2.fit"><b>Ιδανικό για:</b> ιατρεία, κομμωτήρια, γυμναστήρια — οτιδήποτε με ραντεβού.</p>
+          <button type="button" class="lx-tier__demo" data-demo-open="clinic" data-i18n="t2.live">▸ Δες το ζωντανά</button>
+          <a href="#contact" class="lx-tier__cta" data-i18n="t2.cta">Στήσε κρατήσεις →</a>
         </article>
 
         <!-- T3 (highlighted) -->
         <article class="lx-tier tier-sales rise">
           <div class="lx-tier__head">
-            <span class="lx-tier__no" data-i18n="t3.no">TIER 3 · Sales / lead-gen</span>
-            <span class="lx-badge lx-badge--custom" data-i18n="badge.custom">Custom · quoted</span>
+            <span class="lx-tier__no" data-i18n="t3.no">ΕΠΙΠΕΔΟ 3 · Πωλήσεις / lead-gen</span>
+            <span class="lx-badge lx-badge--custom" data-i18n="badge.custom">Custom · κατόπιν προσφοράς</span>
           </div>
           <h3>Bot Πωλήσεων</h3>
-          <p class="what" data-i18n="t3.what">Opens the conversation, works out what the visitor wants, qualifies the interest,
-            collects contact details and hands the hot lead to a human with a summary of the chat.</p>
+          <p class="what" data-i18n="t3.what">Ανοίγει τη συνομιλία, καταλαβαίνει τι θέλει ο επισκέπτης, αξιολογεί το ενδιαφέρον, μαζεύει στοιχεία επικοινωνίας και παραδίδει το ζεστό lead σε άνθρωπο με περίληψη της συνομιλίας.</p>
           <div class="lx-plans">
             <div class="lx-plan">
-              <div class="lx-plan__name"><b>Full</b><span data-i18n="t3.p1.desc">Qualifying scenarios, lead form, sales alert, basic analytics.</span></div>
-              <div class="lx-plan__cost"><span class="mo" data-i18n="t3.mo">from €190<small>/mo</small></span><span class="set" data-i18n="t3.set">setup from €700</span></div>
+              <div class="lx-plan__name"><b>Full</b><span data-i18n="t3.p1.desc">Σενάρια αξιολόγησης, φόρμα lead, ειδοποίηση πωλήσεων, βασικά analytics.</span></div>
+              <div class="lx-plan__cost"><span class="mo" data-i18n="t3.mo">από €190<small>/μήνα</small></span><span class="set" data-i18n="t3.set">setup από €700</span></div>
             </div>
           </div>
-          <p class="lx-plan__range" data-i18n="t3.range">Quoted per project — depends on conversation volume and scenario complexity.</p>
-          <p class="fit" data-i18n="t3.fit"><b>Ideal for:</b> lead-driven services — real estate, insurance, B2B.</p>
-          <a href="#contact" class="lx-tier__cta" data-i18n="t3.cta">Book a scoping call →</a>
+          <p class="lx-plan__range" data-i18n="t3.range">Με προσφορά ανά έργο — ανάλογα με τον όγκο συνομιλιών και την πολυπλοκότητα των σεναρίων.</p>
+          <p class="fit" data-i18n="t3.fit"><b>Ιδανικό για:</b> υπηρεσίες με leads — μεσιτικά, ασφάλειες, B2B.</p>
+          <a href="#contact" class="lx-tier__cta" data-i18n="t3.cta">Κλείσε ένα ραντεβού σχεδιασμού →</a>
         </article>
 
         <!-- T4 -->
         <article class="lx-tier tier-agentic rise">
           <div class="lx-tier__head">
-            <span class="lx-tier__no" data-i18n="t4.no">TIER 4 · Full agent</span>
-            <span class="lx-badge lx-badge--custom" data-i18n="badge.custom">Custom · quoted</span>
+            <span class="lx-tier__no" data-i18n="t4.no">ΕΠΙΠΕΔΟ 4 · Πλήρης agent</span>
+            <span class="lx-badge lx-badge--custom" data-i18n="badge.custom">Custom · κατόπιν προσφοράς</span>
           </div>
           <h3>Πλήρης Agent</h3>
-          <p class="what" data-i18n="t4.what">Doesn’t just talk — does the job: books into a real calendar, updates your CRM,
-            sends SMS/email, even takes payments. Designed around your existing systems.</p>
+          <p class="what" data-i18n="t4.what">Δεν μιλάει απλώς — κάνει τη δουλειά: κλείνει σε πραγματικό ημερολόγιο, ενημερώνει το CRM σου, στέλνει SMS/email, ακόμα και δέχεται πληρωμές. Σχεδιασμένο γύρω από τα συστήματα που ήδη έχεις.</p>
           <div class="lx-plans">
             <div class="lx-plan">
-              <div class="lx-plan__name"><b>Custom</b><span data-i18n="t4.p1.desc">1–3 system integrations, secure flows, priority support.</span></div>
-              <div class="lx-plan__cost"><span class="mo" data-i18n="t4.mo">from €390<small>/mo</small></span><span class="set" data-i18n="t4.set">setup from €1200</span></div>
+              <div class="lx-plan__name"><b>Custom</b><span data-i18n="t4.p1.desc">1–3 ενσωματώσεις συστημάτων, ασφαλείς ροές, priority support.</span></div>
+              <div class="lx-plan__cost"><span class="mo" data-i18n="t4.mo">από €390<small>/μήνα</small></span><span class="set" data-i18n="t4.set">setup από €1200</span></div>
             </div>
           </div>
-          <p class="lx-plan__range" data-i18n="t4.range">Always quoted per project — cost is driven by the integrations and the safety checks.</p>
-          <p class="fit" data-i18n="t4.fit"><b>Ideal for:</b> businesses with systems that want real automation.</p>
-          <a href="#contact" class="lx-tier__cta" data-i18n="t4.cta">Plan your integration →</a>
+          <p class="lx-plan__range" data-i18n="t4.range">Πάντα με προσφορά ανά έργο — το κόστος καθορίζεται από τις ενσωματώσεις και τους ελέγχους ασφαλείας.</p>
+          <p class="fit" data-i18n="t4.fit"><b>Ιδανικό για:</b> επιχειρήσεις με συστήματα που θέλουν πραγματική αυτοματοποίηση.</p>
+          <a href="#contact" class="lx-tier__cta" data-i18n="t4.cta">Σχεδίασε την ενσωμάτωση →</a>
         </article>
       </div>
 
       <!-- add-ons + discounts straight from the proposal -->
       <div class="lx-addons rise">
         <div class="lx-addons__col">
-          <h4 data-i18n="addons.h4a">Add-ons</h4>
+          <h4 data-i18n="addons.h4a">Πρόσθετα</h4>
           <ul>
-            <li data-i18n="addon.a1"><span>WhatsApp / Instagram / Messenger channel</span><b>+€25–45/mo</b></li>
-            <li data-i18n="addon.a2"><span>Extra language beyond EL/EN</span><b>+€10/mo</b></li>
-            <li data-i18n="addon.a3"><span>Connect an external system <em>(per integration)</em></span><b>from €250 once</b></li>
-            <li data-i18n="addon.a4"><span>Monthly report &amp; analytics</span><b>+€15/mo</b></li>
-            <li data-i18n="addon.a5"><span>Priority support</span><b>+€20/mo</b></li>
+            <li data-i18n="addon.a1"><span>Κανάλι WhatsApp / Instagram / Messenger</span><b>+€25–45/μήνα</b></li>
+            <li data-i18n="addon.a2"><span>Επιπλέον γλώσσα πέρα από EL/EN</span><b>+€10/μήνα</b></li>
+            <li data-i18n="addon.a3"><span>Σύνδεση με εξωτερικό σύστημα <em>(ανά ενσωμάτωση)</em></span><b>από €250 εφάπαξ</b></li>
+            <li data-i18n="addon.a4"><span>Μηνιαία αναφορά &amp; analytics</span><b>+€15/μήνα</b></li>
+            <li data-i18n="addon.a5"><span>Priority support</span><b>+€20/μήνα</b></li>
           </ul>
         </div>
         <div class="lx-addons__col">
-          <h4 data-i18n="addons.h4b">Discounts &amp; flexibility</h4>
+          <h4 data-i18n="addons.h4b">Εκπτώσεις & ευελιξία</h4>
           <ul>
-            <li data-i18n="addon.d1"><span>Annual prepay</span><b>2 months free (−16%)</b></li>
-            <li data-i18n="addon.d2"><span>Seasonal businesses (e.g. tavernas)</span><b>winter pause / reduced off-season</b></li>
-            <li data-i18n="addon.d3"><span>Upgrade tier anytime</span><b>previous setup credited</b></li>
+            <li data-i18n="addon.d1"><span>Ετήσια προπληρωμή</span><b>2 μήνες δώρο (−16%)</b></li>
+            <li data-i18n="addon.d2"><span>Εποχικές επιχειρήσεις (π.χ. ταβέρνες)</span><b>χειμερινή παύση / μειωμένο εκτός σεζόν</b></li>
+            <li data-i18n="addon.d3"><span>Αναβάθμιση επιπέδου όποτε θες</span><b>πίστωση προηγούμενου setup</b></li>
           </ul>
-          <p class="lx-vat" data-i18n="addons.vat">All prices in € excluding VAT 24%. Indicative and adjustable per project — Greek market.</p>
+          <p class="lx-vat" data-i18n="addons.vat">Όλες οι τιμές σε € χωρίς ΦΠΑ 24%. Τα Επίπεδα 1–2 είναι σταθερές τιμές τιμοκαταλόγου· τα Επίπεδα 3–4 με προσφορά ανά έργο.</p>
         </div>
       </div>
     </section>
@@ -371,36 +381,36 @@
     <!-- PROCESS -->
     <section class="lx-band wrap">
       <div class="lx-head rise">
-        <span class="kicker" data-i18n="proc.kicker">How it goes</span>
-        <h2 data-i18n="proc.h2">From first call to live in five steps</h2>
+        <span class="kicker" data-i18n="proc.kicker">Πώς πάει</span>
+        <h2 data-i18n="proc.h2">Από το πρώτο call στο live σε πέντε βήματα</h2>
       </div>
       <div class="lx-flow">
-        <div class="lx-step rise"><div class="s">1</div><h4 data-i18n="proc.s1.h4">Scope call</h4><p data-i18n="proc.s1.p">What should it deflect or do? We pick the tier and the model together. No commitment.</p></div>
-        <div class="lx-step rise"><div class="s">2</div><h4 data-i18n="proc.s2.h4">Flow &amp; content</h4><p data-i18n="proc.s2.p">We map the conversation and gather your FAQ, docs, or system access. You approve the flow.</p></div>
-        <div class="lx-step rise"><div class="s">3</div><h4 data-i18n="proc.s3.h4">Build &amp; tune</h4><p data-i18n="proc.s3.p">Prompting, retrieval or tool-calling, brand voice. You test it on a staging link.</p></div>
-        <div class="lx-step rise"><div class="s">4</div><h4 data-i18n="proc.s4.h4">Integrate</h4><p data-i18n="proc.s4.p">Calendar, CRM, e-shop — wired with scoped credentials and an audit log. Sandbox first.</p></div>
-        <div class="lx-step rise"><div class="s">5</div><h4 data-i18n="proc.s5.h4">Launch &amp; watch</h4><p data-i18n="proc.s5.p">One script tag goes live. We monitor the first weeks and tighten anything that misfires.</p></div>
+        <div class="lx-step rise"><div class="s">1</div><h4 data-i18n="proc.s1.h4">Κλήση γνωριμίας</h4><p data-i18n="proc.s1.p">Τι πρέπει να αναλάβει ή να κάνει; Επιλέγουμε μαζί το επίπεδο και το μοντέλο. Χωρίς δέσμευση.</p></div>
+        <div class="lx-step rise"><div class="s">2</div><h4 data-i18n="proc.s2.h4">Ροή & περιεχόμενο</h4><p data-i18n="proc.s2.p">Χαρτογραφούμε τη συνομιλία και μαζεύουμε το FAQ, τα έγγραφα ή την πρόσβαση στα συστήματά σου. Εγκρίνεις τη ροή.</p></div>
+        <div class="lx-step rise"><div class="s">3</div><h4 data-i18n="proc.s3.h4">Build & tuning</h4><p data-i18n="proc.s3.p">Prompting, retrieval ή tool-calling, φωνή της μάρκας. Το δοκιμάζεις σε staging link.</p></div>
+        <div class="lx-step rise"><div class="s">4</div><h4 data-i18n="proc.s4.h4">Ενσωμάτωση</h4><p data-i18n="proc.s4.p">Ημερολόγιο, CRM, e-shop — συνδεδεμένα με περιορισμένα credentials και audit log. Πρώτα σε sandbox.</p></div>
+        <div class="lx-step rise"><div class="s">5</div><h4 data-i18n="proc.s5.h4">Launch & παρακολούθηση</h4><p data-i18n="proc.s5.p">Ένα script tag βγαίνει live. Παρακολουθούμε τις πρώτες εβδομάδες και διορθώνουμε ό,τι αστοχεί.</p></div>
       </div>
     </section>
 
     <!-- WHY -->
     <section class="lx-band wrap">
       <div class="lx-head rise">
-        <span class="kicker" data-i18n="why.kicker">Why us, specifically</span>
-        <h2 data-i18n="why.h2">Engineered to be trusted</h2>
+        <span class="kicker" data-i18n="why.kicker">Γιατί εμάς, συγκεκριμένα</span>
+        <h2 data-i18n="why.h2">Φτιαγμένο για να το εμπιστεύεσαι</h2>
       </div>
       <div class="lx-why">
         <div class="lx-why__item rise">
           <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <div><h4 data-i18n="why.i2.h4">Greek-first, not Greek-as-afterthought</h4><p data-i18n="why.i2.p">The model is chosen per client, not one-size-fits-all — premium models where Greek tone and nuance matter most, economical ones where volume justifies it.</p></div>
+          <div><h4 data-i18n="why.i2.h4">Greek-first, όχι ελληνικά εκ των υστέρων</h4><p data-i18n="why.i2.p">Το μοντέλο επιλέγεται ανά πελάτη, όχι ένα-για-όλους — premium μοντέλα όπου μετράει το ελληνικό ύφος και η ακρίβεια, οικονομικότερα όπου το δικαιολογεί ο όγκος.</p></div>
         </div>
         <div class="lx-why__item rise">
           <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <div><h4 data-i18n="why.i4.h4">Agentic, but careful</h4><p data-i18n="why.i4.p">Credentials encrypted in a secrets manager, least-privilege scopes, rate limiting, and an audit line for every action the bot takes.</p></div>
+          <div><h4 data-i18n="why.i4.h4">Agentic, αλλά προσεκτικά</h4><p data-i18n="why.i4.p">Credentials κρυπτογραφημένα σε secrets manager, δικαιώματα ελάχιστων προνομίων, rate limiting, και μια γραμμή audit για κάθε ενέργεια του bot.</p></div>
         </div>
         <div class="lx-why__item rise">
           <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <div><h4 data-i18n="why.i6.h4">One person, start to finish</h4><p data-i18n="why.i6.p">No account manager relay. The person scoping the bot is the one building it and the one you message when something’s off.</p></div>
+          <div><h4 data-i18n="why.i6.h4">Δύο ιδρυτές, κανένα ενδιάμεσο</h4><p data-i18n="why.i6.p">Χωρίς αλυσίδα από account managers. Ο Κίμων το σχεδιάζει μαζί σου, ο Λεβάν το χτίζει — οι άνθρωποι που γνωρίζεις είναι αυτοί που κάνουν τη δουλειά.</p></div>
         </div>
       </div>
     </section>
@@ -408,67 +418,68 @@
     <!-- FAQ -->
     <section class="lx-band wrap" id="faq">
       <div class="lx-head rise">
-        <span class="kicker" data-i18n="faq.kicker">Straight answers</span>
-        <h2 data-i18n="faq.h2">Questions we get a lot</h2>
+        <span class="kicker" data-i18n="faq.kicker">Καθαρές απαντήσεις</span>
+        <h2 data-i18n="faq.h2">Ερωτήσεις που μας κάνουν συχνά</h2>
       </div>
       <div class="lx-faq">
-        <details class="rise"><summary data-i18n="faq.q1">Will the bot make stuff up?</summary><p data-i18n="faq.a1">It answers from the content you give it and is told to say “I don’t know — here’s how to reach a human” when something’s out of scope. Grounding the model in your own material instead of letting it free-style is exactly what keeps it from inventing hours or prices. We test the edges before launch.</p></details>
-        <details class="rise"><summary data-i18n="faq.q2">Do you need our passwords?</summary><p data-i18n="faq.a2">For Tiers 1 and 2, basically no — a Questions bot holds zero credentials, a Bookings bot just needs calendar/email access. Only the full Agent tier touches real systems, and there we use scoped, least-privilege keys stored encrypted, with every action logged so you can audit what it did.</p></details>
-        <details class="rise"><summary data-i18n="faq.q3">Are there hidden usage fees on top of the monthly price?</summary><p data-i18n="faq.a3">No. The tier subscription is flat and already bundles hosting and the AI model, so there’s no separate “API bill” that creeps up with traffic. Even on the priciest model our running cost stays well under what the subscription covers — that’s why pricing is based on the value (fewer phone calls, fewer no-shows, 24/7), not on tokens.</p></details>
-        <details class="rise"><summary data-i18n="faq.q4">Can it speak Greek properly?</summary><p data-i18n="faq.a4">Yes — every tier is bilingual EL/EN out of the box and the content is written in Greek. We choose the model per client: premium models where Greek tone and nuance matter most, more economical ones where high conversation volume justifies it.</p></details>
-        <details class="rise"><summary data-i18n="faq.q5">We already have a website. Do we need a new one?</summary><p data-i18n="faq.a5">No. The chatbot drops onto your existing site with one script tag. We only build a site if you want one or the current one is holding the bot back.</p></details>
-        <details class="rise"><summary data-i18n="faq.q6">What if we outgrow the tier we start on?</summary><p data-i18n="faq.a6">That’s the plan. Upgrade anytime — a Questions bot grows into Bookings, Bookings into Sales, and any of them into a full Agent. No rebuild, and we credit the setup fee you already paid against the new tier. Tiers can also be hybrid: e.g. a Questions bot with one booking button borrowed from Tier 2.</p></details>
-        <details class="rise"><summary data-i18n="faq.q7">Do we own it?</summary><p data-i18n="faq.a7">Yes. The build is yours. The managed-service subscription is optional — drop it whenever, the bot is still yours. No lock-in.</p></details>
+        <details class="rise"><summary data-i18n="faq.q1">Θα βγάζει πράγματα απ’ το μυαλό του;</summary><p data-i18n="faq.a1">Απαντά από το περιεχόμενο που του δίνεις και έχει οδηγία να λέει «Δεν ξέρω — δες εδώ πώς να βρεις άνθρωπο» όταν κάτι είναι εκτός θέματος. Το να στηρίζεται στο δικό σου υλικό αντί να αυτοσχεδιάζει είναι ακριβώς αυτό που το κρατά από το να εφευρίσκει ωράρια ή τιμές. Δοκιμάζουμε τα όρια πριν το launch.</p></details>
+        <details class="rise"><summary data-i18n="faq.q2">Χρειάζεστε τους κωδικούς μας;</summary><p data-i18n="faq.a2">Για τα Επίπεδα 1 και 2, ουσιαστικά όχι — ένα bot Ερωτήσεων δεν κρατά credentials, ένα bot Κρατήσεων θέλει απλώς πρόσβαση σε ημερολόγιο/email. Μόνο το πλήρες Επίπεδο Agent αγγίζει πραγματικά συστήματα, κι εκεί χρησιμοποιούμε περιορισμένα κλειδιά ελάχιστων προνομίων, κρυπτογραφημένα, με κάθε ενέργεια καταγεγραμμένη ώστε να ελέγχεις τι έκανε.</p></details>
+        <details class="rise"><summary data-i18n="faq.q3">Υπάρχουν κρυφές χρεώσεις χρήσης πάνω από τη μηνιαία τιμή;</summary><p data-i18n="faq.a3">Όχι. Η συνδρομή του επιπέδου είναι σταθερή και ήδη περιλαμβάνει το hosting και το AI μοντέλο, οπότε δεν υπάρχει ξεχωριστός «λογαριασμός API» που ανεβαίνει με την κίνηση. Ακόμα και στο πιο ακριβό μοντέλο, το κόστος λειτουργίας μας μένει αρκετά κάτω από όσα καλύπτει η συνδρομή — γι’ αυτό η τιμή βασίζεται στην αξία (λιγότερα τηλέφωνα, λιγότερα ακυρωμένα ραντεβού, 24/7), όχι σε tokens.</p></details>
+        <details class="rise"><summary data-i18n="faq.q4">Μιλάει σωστά ελληνικά;</summary><p data-i18n="faq.a4">Ναι — κάθε επίπεδο είναι δίγλωσσο EL/EN εξ ορισμού και το περιεχόμενο γράφεται στα ελληνικά. Επιλέγουμε το μοντέλο ανά πελάτη: premium μοντέλα όπου μετράει περισσότερο το ελληνικό ύφος και οι λεπτές αποχρώσεις, πιο οικονομικά όπου το δικαιολογεί ο μεγάλος όγκος συνομιλιών.</p></details>
+        <details class="rise"><summary data-i18n="faq.q5">Έχουμε ήδη ιστοσελίδα. Χρειαζόμαστε καινούρια;</summary><p data-i18n="faq.a5">Όχι. Το chatbot μπαίνει στην υπάρχουσα σελίδα σου μ’ ένα script tag. Φτιάχνουμε σελίδα μόνο αν τη θες ή αν η τωρινή εμποδίζει το bot.</p></details>
+        <details class="rise"><summary data-i18n="faq.q6">Κι αν ξεπεράσουμε το επίπεδο από το οποίο ξεκινάμε;</summary><p data-i18n="faq.a6">Αυτό είναι το σχέδιο. Αναβάθμιση όποτε θες — ένα bot Ερωτήσεων μεγαλώνει σε Κρατήσεις, οι Κρατήσεις σε Πωλήσεις, και οποιοδήποτε σε πλήρη Agent. Χωρίς ξαναχτίσιμο, και πιστώνουμε το setup που ήδη πλήρωσες στο νέο επίπεδο. Τα επίπεδα μπορούν να είναι και υβριδικά: π.χ. ένα bot Ερωτήσεων μ’ ένα κουμπί κράτησης δανεισμένο από το Επίπεδο 2.</p></details>
+        <details class="rise"><summary data-i18n="faq.q7">Μας ανήκει;</summary><p data-i18n="faq.a7">Ναι. Το build είναι δικό σου. Η συνδρομή managed-service είναι προαιρετική — σταμάτα την όποτε θες, το bot παραμένει δικό σου. Χωρίς δεσμεύσεις.</p></details>
       </div>
     </section>
 
     <!-- ===================================================================
-         CONTACT. TODO:contact — phone + email below are placeholders.
-         Form posts via app.js → Formspree (swap endpoint for the real inbox).
+         CONTACT. Real channels live (both numbers on WhatsApp/Viber, Gmail inbox).
+         Form posts via app.js → Formspree (xnjkrqvg → info.logosai@gmail.com).
          =================================================================== -->
     <section class="lx-band wrap" id="contact">
       <div class="lx-contact">
         <div class="rise">
-          <span class="kicker" data-i18n="contact.kicker">Get in touch</span>
-          <h3 style="margin-top:14px" data-i18n="contact.h3">Tell us what you’re drowning in.</h3>
-          <p class="muted" data-i18n="contact.p">The repetitive questions, the no-shows, the order-status calls — whatever
-            it is, there’s probably a tier for it. Drop a line and we’ll reply within a business day,
-            usually with a question or two before quoting anything.</p>
+          <span class="kicker" data-i18n="contact.kicker">Επικοινωνία</span>
+          <h2 class="lx-contact__h" data-i18n="contact.h3">Πες μας τι σε πνίγει.</h2>
+          <p class="muted" data-i18n="contact.p">Οι επαναλαμβανόμενες ερωτήσεις, τα ακυρωμένα ραντεβού, τα τηλέφωνα για το πού είναι η παραγγελία — ό,τι κι αν είναι, μάλλον υπάρχει επίπεδο γι’ αυτό. Γράψε μας και απαντάμε μέσα σε μία εργάσιμη, συνήθως με μια-δυο ερωτήσεις πριν δώσουμε τιμή.</p>
 
           <div class="lx-channel">
             <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z"/></svg></span>
-            <!-- TODO:contact — real phone / WhatsApp -->
-            <div><b data-i18n="contact.ch1.label">Call or WhatsApp</b><span>+30 — — — &nbsp;(set in index.html)</span></div>
+            <div><b data-i18n="contact.ch1.label">Κλήση, WhatsApp ή Viber</b><span class="nowrap-numbers"><a href="tel:+306983678188">698 367 8188</a> · <a href="tel:+306983731929">698 373 1929</a><br><a href="https://wa.me/306983678188" target="_blank" rel="noopener">WhatsApp</a> · <a href="viber://chat?number=%2B306983678188">Viber</a></span></div>
           </div>
           <div class="lx-channel">
             <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg></span>
-            <!-- TODO:contact — real email -->
-            <div><b data-i18n="contact.ch2.label">Email</b><span>hello@your-domain &nbsp;(set in index.html)</span></div>
+            <div><b data-i18n="contact.ch2.label">Email</b><span><a href="mailto:info.logosai@gmail.com">info.logosai@gmail.com</a></span></div>
           </div>
           <div class="lx-channel">
             <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <div><b data-i18n="contact.ch3.label">Based in</b><span data-i18n="contact.ch3.val">Greece — working remotely with EU businesses</span></div>
+            <div><b data-i18n="contact.ch3.label">Έδρα</b><span data-i18n="contact.ch3.val">Θεσσαλονίκη — δουλεύουμε εξ αποστάσεως σε όλη την Ελλάδα και την ΕΕ</span></div>
+          </div>
+          <div class="lx-channel">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <div><b data-i18n="contact.ch4.label">Με ποιους μιλάς</b><span data-i18n="contact.ch4.val">Κίμων Κατεχάκης — πωλήσεις &amp; σχεδιασμός · Λεβάν Μαμουλάτζε — ανάπτυξη</span></div>
           </div>
         </div>
 
         <form class="lx-form rise" id="leadForm" novalidate>
           <div class="two">
-            <input type="text" id="f-name" name="name" placeholder="Your name" data-i18n-ph="form.ph.name" autocomplete="name">
+            <input type="text" id="f-name" name="name" placeholder="Το όνομά σου" data-i18n-ph="form.ph.name" autocomplete="name">
             <input type="email" id="f-email" name="email" placeholder="Email" data-i18n-ph="form.ph.email" autocomplete="email">
           </div>
-          <input type="text" id="f-company" name="company" placeholder="Business name (optional)" data-i18n-ph="form.ph.company" autocomplete="organization">
+          <input type="text" id="f-company" name="company" placeholder="Επωνυμία επιχείρησης (προαιρετικό)" data-i18n-ph="form.ph.company" autocomplete="organization">
+          <input type="tel" id="f-phone" name="phone" placeholder="Τηλέφωνο (προαιρετικό — σε παίρνουμε εμείς)" data-i18n-ph="form.ph.phone" autocomplete="tel">
           <select id="f-tier" name="tier">
-            <option value="" data-i18n="form.opt.0">What are you after? (optional)</option>
-            <option value="t1-questions" data-i18n="form.opt.1">Tier 1 · Questions bot — answer customer questions</option>
-            <option value="t2-bookings" data-i18n="form.opt.2">Tier 2 · Bookings bot — guide visitors to an appointment</option>
-            <option value="t3-sales" data-i18n="form.opt.3">Tier 3 · Sales bot — qualify &amp; capture leads</option>
-            <option value="t4-agent" data-i18n="form.opt.4">Tier 4 · Full Agent — connect to our systems</option>
-            <option value="website" data-i18n="form.opt.5">A website (with or without a bot)</option>
-            <option value="unsure" data-i18n="form.opt.6">Not sure yet — help me pick</option>
+            <option value="" data-i18n="form.opt.0">Τι ψάχνεις; (προαιρετικό)</option>
+            <option value="t1-questions" data-i18n="form.opt.1">Επίπεδο 1 · Bot Ερωτήσεων — απάντηση σε ερωτήσεις πελατών</option>
+            <option value="t2-bookings" data-i18n="form.opt.2">Επίπεδο 2 · Bot Κρατήσεων — οδήγησε επισκέπτες σε ραντεβού</option>
+            <option value="t3-sales" data-i18n="form.opt.3">Επίπεδο 3 · Bot Πωλήσεων — αξιολόγησε &amp; μάζεψε leads</option>
+            <option value="t4-agent" data-i18n="form.opt.4">Επίπεδο 4 · Πλήρης Agent — σύνδεση με τα συστήματά μας</option>
+            <option value="website" data-i18n="form.opt.5">Μια ιστοσελίδα (με ή χωρίς bot)</option>
+            <option value="unsure" data-i18n="form.opt.6">Δεν είμαι σίγουρος ακόμα — βοήθησέ με να διαλέξω</option>
           </select>
-          <textarea id="f-message" name="message" placeholder="What's the repetitive thing you'd love to hand off? A couple of sentences is plenty." data-i18n-ph="form.ph.message"></textarea>
-          <button type="submit" class="lx-btn lx-cta" data-i18n="form.submit">Send it →</button>
-          <p class="lx-form__note" data-i18n="form.note">We reply within one business day. No spam, no drip sequence — just a human.</p>
+          <textarea id="f-message" name="message" placeholder="Ποιο είναι το επαναλαμβανόμενο πράγμα που θα ήθελες να δώσεις αλλού; Δυο προτάσεις αρκούν." data-i18n-ph="form.ph.message"></textarea>
+          <button type="submit" class="lx-btn lx-cta" data-i18n="form.submit">Στείλ’ το →</button>
+          <p class="lx-form__note" data-i18n="form.note">Απαντάμε μέσα σε μία εργάσιμη. Χωρίς spam, χωρίς drip — απλώς ένας άνθρωπος.</p>
         </form>
       </div>
     </section>
@@ -484,8 +495,9 @@
       <div class="lx-modal__bar">
         <span class="lx-modal__dots" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="lx-modal__title" id="demoModalTitle">Demo</span>
-        <a class="lx-modal__ext" id="demoModalExt" href="#" target="_blank" rel="noopener" data-i18n="modal.open">Open in new tab ↗</a>
-        <button class="lx-modal__close" id="demoModalClose" type="button" aria-label="Close demo" data-i18n-aria="modal.close">×</button>
+        <a class="lx-modal__cta" id="demoModalCta" href="#contact" data-i18n="modal.cta">Θέλω ένα τέτοιο →</a>
+        <a class="lx-modal__ext" id="demoModalExt" href="#" target="_blank" rel="noopener" data-i18n="modal.open">Άνοιγμα σε νέα καρτέλα ↗</a>
+        <button class="lx-modal__close" id="demoModalClose" type="button" aria-label="Κλείσιμο demo" data-i18n-aria="modal.close">×</button>
       </div>
       <div class="lx-modal__stage" id="demoModalStage">
         <div class="lx-modal__load" id="demoModalLoad"><span class="lx-spin2" aria-hidden="true"></span></div>
@@ -498,20 +510,20 @@
       <a href="#top" class="lx-logo" style="font-size:1.2rem">
         <span><b>Lógos</b><span class="ai">AI</span></span>
       </a>
-      <small>© <span id="yr">2026</span> <span data-i18n="foot.copy">LógosAI — chatbots, AI agents &amp; websites. Athens.</span></small>
+      <small>© <span id="yr">2026</span> <span data-i18n="foot.copy">LógosAI — chatbots, AI agents &amp; ιστοσελίδες. Θεσσαλονίκη.</span></small>
       <div class="row" style="gap:20px;flex-wrap:wrap">
-        <a href="#build" data-i18n="nav.build">What we build</a>
-        <a href="#pricing" data-i18n="foot.pricing">Pricing</a>
+        <a href="#build" data-i18n="nav.build">Τι φτιάχνουμε</a>
+        <a href="#pricing" data-i18n="foot.pricing">Τιμές</a>
         <a href="#demo" data-i18n="foot.demo">Demo</a>
-        <a href="#contact" data-i18n="foot.contact">Contact</a>
+        <a href="#contact" data-i18n="foot.contact">Επικοινωνία</a>
       </div>
     </div>
   </footer>
 
-  <!-- mobile-only quick actions; TODO:contact — phone -->
+  <!-- mobile-only quick actions -->
   <div class="lx-stickybar">
-    <a href="#contact" data-i18n="nav.cta">Book a call</a>
-    <a href="tel:+30000000000" data-i18n="sticky.call">Call</a>
+    <a href="#contact" data-i18n="nav.cta">Κλείσε ραντεβού</a>
+    <a href="tel:+306983678188" data-i18n="sticky.call">Κλήση</a>
   </div>
 
   <script src="assets/js/i18n.js" defer></script>

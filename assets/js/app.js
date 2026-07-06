@@ -19,18 +19,15 @@
   /* ---- demo deployments (single source of truth) ---- */
   var CHATBOTTIERS_URL = 'https://chat-bot-tiers-eight.vercel.app';
   var CHARALAMPIDIS_URL = 'https://chat-bot-henna-mu.vercel.app/';
+  // ?chat=open → every demo page opens its own conversation on load, so the
+  // visitor lands in the chat instead of hunting for a bubble in the corner.
   var DEMOS = {
-    restaurant: { url: CHATBOTTIERS_URL + '/restaurant', title: 'Taverna «Το Κύμα» — Tier 1 demo' },
-    clinic:     { url: CHATBOTTIERS_URL + '/clinic',     title: 'Clinic «Γαλήνη» — Tier 2 demo' },
-    // ?chat=open → the widget on that page opens itself, so the visitor lands in
-    // the conversation instead of hunting for the bubble in a corner of the storefront
-    eshop:      { url: CHARALAMPIDIS_URL + '?chat=open', title: 'Χαραλαμπίδη — live client bot' }
+    restaurant: { url: CHATBOTTIERS_URL + '/restaurant?chat=open', title: 'Taverna «Το Κύμα» — Tier 1 demo' },
+    clinic:     { url: CHATBOTTIERS_URL + '/clinic?chat=open',     title: 'Clinic «Γαλήνη» — Tier 2 demo' },
+    eshop:      { url: CHARALAMPIDIS_URL + '?chat=open',           title: 'Χαραλαμπίδη — live client bot' }
   };
 
-  // TODO(LM): replace with the LógosAI Formspree form id once the new inbox
-  // is verified. Until then this points at the old LMLabs endpoint so test
-  // submissions don't silently vanish.
-  var FORM_ENDPOINT = 'https://formspree.io/f/xgopbgop';
+  var FORM_ENDPOINT = 'https://formspree.io/f/xnjkrqvg';   // → info.logosai@gmail.com
 
   /* ---- sticky nav: blur background past the fold ---- */
   var nav = $('#nav');
@@ -42,15 +39,17 @@
   var burger = $('#burger');
   var drawer = $('#drawer');
   if (burger && drawer) {
+    var shutDrawer = function () {
+      drawer.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+    };
     burger.addEventListener('click', function () {
       var open = drawer.classList.toggle('is-open');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    $$('a', drawer).forEach(function (a) {
-      a.addEventListener('click', function () {
-        drawer.classList.remove('is-open');
-        burger.setAttribute('aria-expanded', 'false');
-      });
+    $$('a', drawer).forEach(function (a) { a.addEventListener('click', shutDrawer); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) shutDrawer();
     });
   }
 
@@ -150,6 +149,34 @@
         openDemo(btn.getAttribute('data-demo-open'));
       });
     });
+
+    // "I want one like this" in the modal bar: close the demo, let the anchor
+    // carry the visitor to #contact — the hottest click on the page.
+    var mCta = $('#demoModalCta', modal);
+    if (mCta) mCta.addEventListener('click', function () { closeDemo(); });
+
+    // ?demo=restaurant|clinic|eshop deep link — lets a specific demo be shared
+    // (e.g. over WhatsApp mid-conversation) with the pricing context around it.
+    var wanted = new URLSearchParams(window.location.search).get('demo');
+    if (wanted && DEMOS[wanted]) openDemo(wanted);
+
+    // Warm both bot backends the moment the gallery scrolls into view, so the
+    // first click doesn't eat a Vercel cold start behind the spinner.
+    var demoBand = $('#demo');
+    if (demoBand && 'IntersectionObserver' in window) {
+      var warmed = false;
+      var warmIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting || warmed) return;
+          warmed = true;
+          warmIo.disconnect();
+          [CHATBOTTIERS_URL + '/api/health', CHARALAMPIDIS_URL + 'api/health'].forEach(function (u) {
+            fetch(u, { mode: 'no-cors' }).catch(function () { /* warm-up only */ });
+          });
+        });
+      }, { rootMargin: '600px 0px' });
+      warmIo.observe(demoBand);
+    }
   }
 
   /* ---- lead form ----
@@ -189,6 +216,7 @@
         name: name.value.trim(),
         email: email.value.trim(),
         company: ($('#f-company', form) || {}).value || '',
+        phone: ($('#f-phone', form) || {}).value || '',
         tier: ($('#f-tier', form) || {}).value || '',
         message: message.value.trim(),
         _source: 'logosai.site/contact'
